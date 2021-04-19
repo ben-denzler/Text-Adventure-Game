@@ -1,33 +1,33 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\>"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project title\>
- > Your author list below should include links to all members GitHub (remove existing author).
+# A Text Adventure Game
  
- > Authors: \<[Jeffrey McDaniel](https://github.com/jmcda001)\>
+ Authors: [Benjamin Denzler](https://github.com/ben-denzler), [Ashley Pang](https://github.com/apang024), [Joshua Beed](https://github.com/jbeed33)
  
- > You will be forming a group of **THREE** students and working on an interesting project. A list of proposed project ideas that have been successful in previous quarters is given in the project specifications link on iLearn. You can select an idea from the list, start thinking about the features you will implement, what design patterns can help you implement them, and why. If you want to propose your own original idea, you will have to contact an instructor to discuss the project and obtain written permission before you submit your project proposal. Your project needs to implement two design patterns.The project work should be divided almost equally among team members and each member is expected to work on at least one design pattern (more than one partner may work on a pattern) and some of its test cases. You can of course help each other, but it needs to be clear who will be responsible for which patterns and for which features.
- 
- > ## Expectations
- > * Incorporate **at least two** distinct design patterns. You need to include at least *one* design pattern that we will teach this session:
- >   * Composite, Strategy, Abstract Factory, Visitor, or Decorator
- > * All design patterns need to be linked together (it can't be two distinct projects)
- > * Your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
- > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
- > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
-> * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group.
-
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project?
- > * What are the two design patterns you will be using? For each design pattern you must explain in 4-5 sentences:
- >   * Why you picked this pattern and what feature you will implement with it
- >   * What problem you anticipate encountering when implementing your project that you will solve using the design pattern
- >   * Why the chosen design pattern will lead to a good solution to that problem
- > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+ 
+ This is a simple text-based RPG that has a story, choice of characters, inventory for armor/weapons/items, turn-based combat and several endings that depend on choices you make during the game. The game takes place in "steps" that can be narrative or combat. Dialogue choices are made while not in combat, and battles have options to attack, run etc.
+
+ We were interested in this project because we grew up playing video games (at least to some extent) and thought that trying to make one ourselves would be a fun and exciting project. A role-playing game is fairly open-ended compared to other ideas, and so allows us to be more creative- we can write our own story! A more open-ended project like this will also help us better understand the need for design patterns to structure our program.
+
+ ### Languages, tools and technologies being used
+ * [C++](https://en.wikipedia.org/wiki/C%2B%2B) - Our choice of coding language for the project
+ * [Git](https://git-scm.com/) and [GitHub](https://github.com/) - Version control and project management tools
+ * [Visual Studio Code](https://code.visualstudio.com/) - Robust code editor with an integrated terminal and Git support
+ * [LucidChart](https://www.lucidchart.com/) - Tool for creating OMT class diagrams
+
+ ### Project input/output
+ * **Input:** User enters numbers corresponding to choices they can make during dialogue and combat scenes. For example, when not in combat, user could choose to travel down path 1 or 2, or could access their inventory before deciding. Invalid input is ignored.
+ * **Output:** The game primarily outputs sentences describing the situation to the user and prompts them to make choices until they reach the end of the game. There are no graphical elements for the environment etc., only text. Outputs are continually displayed until the user gives input.
+
+ ### Design patterns to be used
+ * **Composite:** 
+    * We're using the Composite design pattern primarily for the game's inventory system. We'd like to give the character different inventories: armor, weapons and items, for example. This could be implemented by creating arrays or vectors for each one, but this method would quickly become messy. If we wanted lots of inventories and items, we'd need lots of arrays in our character class. Also, hardcoding the player's inventories as arrays prevents us from easily adding or removing inventories throughout the game. 
+
+    * The Composite design pattern fixes these problems by allowing us to define an Inventory object as a composite that can contain items *or* other inventories. This way, we can simply give our character class a single Inventory object and add other inventories to it as needed. This approach both simplifies the structure of our character class and allows us to dynamically add and remove inventories throughout the game (if you get a new backpack, for example).
+
+* **Factory:**
+    * The Factory design pattern is being used for character and enemy creation. The player should be able to choose from a number of pre-created characters when they start the game, and enemy encounters should randomly select from one of several enemies to fight. Each character and enemy will be their own class, but we don't know which classes will be needed until runtime. Without a design pattern for this, our `main()` would need lots of branches to decide which objects to create, which is messy and hard to maintain at large scale.
+
+    * The Factory design pattern fixes these problems by letting dedicated Factory classes handle object creation for us. We can define our classes for characters and enemies, then simply call the Factory class to make one. For the player's character, the character Factory would take user input, and for enemies, we can give it random input with `rand()` or similar. This greatly simplifies object creation and allows for much cleaner code that is easier to maintain.
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
