@@ -10,6 +10,8 @@
 
  ### Languages, tools and technologies being used
  * [C++](https://en.wikipedia.org/wiki/C%2B%2B) - Our choice of coding language for the project
+ * [CMake](https://cmake.org/) - Makefile tool used for easy project compilation
+ * [Valgrind](https://valgrind.org/) - Memory management and error detection tool
  * [Git](https://git-scm.com/) and [GitHub](https://github.com/) - Version control and project management tools
  * [Visual Studio Code](https://code.visualstudio.com/) - Robust code editor with an integrated terminal and Git support
  * [LucidChart](https://www.lucidchart.com/) - Tool for creating OMT class diagrams
