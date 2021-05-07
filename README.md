@@ -31,18 +31,30 @@
 
     * The Abstract Factory design pattern fixes these problems by letting dedicated Factory classes handle object creation for us. We can predefine different instances of characters and enemies, then pass a string to our Factory class to create one. For example, if the player chooses a Wizard, we can simply pass "Wizard" to our Factory and let it handle the details of its creation. This greatly simplifies object creation and allows for much cleaner code that is easier to maintain. The use of an Abstract Factory in particular also allows us to easily create other Factories for different classes, improving the extensibility of our program.
 
- > ## Phase II
- > In addition to completing the "Class Diagram" section below, you will need to 
- > * Set up your GitHub project board as a Kanban board for the project. It should have columns that map roughly to 
- >   * Backlog, TODO, In progress, In testing, Done
- >   * You can change these or add more if you'd like, but we should be able to identify at least these.
- > * There is no requirement for automation in the project board but feel free to explore those options.
- > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Create smaller development tasks as issues and assign them to team members. Place these in the `TODO` column.
- >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
- > Include a class diagram(s) for each design pattern and a description of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
+### Full OMT diagram:
+
+ ![Full OMT diagram](docs/FullOMTDiagram.png)
+
+ This is the full OMT diagram for our program, showing our Composite and Abstract Factory design patterns in addition to our GameController class. In this full diagram, you can see that the client interacts with the program through GameController, BaseItem and AbstractFactory. More details on these components is below.
+
+### Composite pattern diagram:
+
+ ![Composite pattern diagram](docs/CompositeOMT.png) 
+
+This diagram describes the Composite design pattern that we are using for the game's inventory system. BaseItem is a Component that defines the shared interface for all our inventory classes. `use()` will open an inventory, equip armor and weapons, or use a consumable. `getName()` returns an object's name, and `display()` outputs an item or inventory's stats. Inventory is a Composite because it implements the shared interface but also contains other BaseItem objects (acts as a bag that contains other items). Armor, Weapon and Consumable are all Leaves and will be held within Inventory objects. The leaves implement their own stats like defense, attack or health. Each Character object will get their own private Inventory which can be added to throughout the game.
+
+### Abstract Factory pattern diagram:
+
+ ![Abstract Factory pattern diagram](docs/AbstractFactoryOMT.png) 
+
+ This diagram describes the Abstract Factory design pattern being used for character and enemy creation. We've defined an abstract class, AbstractFactory, that other Factories derive from. Our game only needs to create Enemies and Characters, so we have a single EntityFactory. Enemy and Character derive from a virtual Entity class which defines shared functions and data members. The factory's `createEnemy()` and `createCharacter()` will take strings as parameters to decide what type of object to create. When created, an enemy's name and stats will be randomized, and a character will be given an inventory and stats appropriate for the chosen class, in addition to a player-specified name. All entities have a name, health, attack and defense as well as functions for combat and displaying these values. Since factories derive from an abstract class, we could easily add more factories in the future if we expand the game.
+
+ ### GameController diagram:
+
+ ![GameController diagram](docs/GameControllerOMT.png)
+
+ The final part of our OMT diagram is a single class rather than a design pattern. This GameController class will hold information about the game's current state and direct its flow through use of classes from the other two design patterns. In this way, it is essentially the interface for the game. It keeps track of the enemies that *could* be encountered, the player's character and the current enemy. It can create entities by calling our Factory, and it is responsible for reading and outputting the game's narrative from a file. It will dictate much of the game's user interface and decide when dialogue, battle etc. should occur based on headings we place in our game's "script" file.
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
