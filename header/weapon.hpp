@@ -18,7 +18,7 @@ class Weapon : public baseItem {
         }
 
         virtual void display() {
-            cout << type << ": " << name << ", " << attack << "ATT" << endl;
+            cout << type << ": " << name << ", " << attack << " ATT" << endl;
         }
 }
 
