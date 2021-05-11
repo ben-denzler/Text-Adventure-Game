@@ -10,9 +10,10 @@ class baseItem {
         string type = "";
     public:
         virtual void use() = 0;
-        virtual string getName() { return name; }
-        virtual string getType() { return type; }
         virtual string display() = 0;
+        
+        string getName() { return name; }
+        string getType() { return type; }
 }
 
 #endif
