@@ -2,7 +2,8 @@
 #define BASEITEM_HPP
 
 #include <string>
-#include <iostream>
+#include "../mock/Entity_Mock.hpp"
+#include "../mock/Character_Mock.hpp"
 using namespace std;
 
 class baseItem {
@@ -10,9 +11,9 @@ class baseItem {
         string name = "";
         string type = "";
     public:
-        virtual void use() = 0;
+        baseItem(string n, string t) : name(n), type(t) {}
+        virtual void use(Character_Mock*) = 0;
         virtual void display() = 0;
-        
         string getName() { return name; }
         string getType() { return type; }
 };
