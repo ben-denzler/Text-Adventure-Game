@@ -15,10 +15,9 @@ class Armor : public baseItem {
         virtual void use(Character* hero) {
             hero->setDefense(defense);
         }
-
+        
         virtual void display() {
             cout << type << ": " << name << ", " << defense << " DEF" << endl;
-            // Armor: Cabalist's Hymnal, 207 DEF
         }
 };
 
