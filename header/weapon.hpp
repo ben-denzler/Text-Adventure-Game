@@ -10,8 +10,6 @@ using namespace std;
 
 class Weapon : public baseItem {
     protected:
-        string name;
-        string type;
         int attack;
     public:
         Weapon() : baseItem("", "Weapon"), attack(0) {}
