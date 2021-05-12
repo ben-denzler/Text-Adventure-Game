@@ -18,7 +18,7 @@ TEST(Weapon_tests, UseWeapon)
 TEST(Weapon_tests, UseWeaponDefaultConstructor)
 {
     Entity_Mock* character = new Character_Mock();
-    Weapon* weapon = new Weapon();
+    baseItem* weapon = new Weapon();
     weapon->use(character);
 
     EXPECT_EQ(character->getAttack(), 0);
