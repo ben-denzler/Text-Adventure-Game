@@ -4,6 +4,7 @@
 #include <string>
 #include "../mock/Entity_Mock.hpp"
 #include "../mock/Character_Mock.hpp"
+
 using namespace std;
 
 class baseItem {
@@ -12,7 +13,7 @@ class baseItem {
         string type = "";
     public:
         baseItem(string n, string t) : name(n), type(t) {}
-        virtual void use() = 0;
+        virtual void use(Entity_Mock*) = 0;
         virtual void display() = 0;
 
         string getName() { return name; }

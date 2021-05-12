@@ -6,13 +6,22 @@
 #include "../mock/Character_Mock.hpp"
 #include "../header/weapon.hpp"
 
-TEST(PLACEHOLDER_TESTS, TEST1)
+TEST(Weapon_tests, UseWeapon)
 {
     Entity_Mock* character = new Character_Mock();
-    //Weapon* weapon = new Weapon("Good weapon", "wood", 2);
-    //weapon->use(character);
+    Weapon* weapon = new Weapon("Good weapon", "wood", 2);
+    weapon->use(character);
 
+    EXPECT_EQ(character->getAttack(), 2);
+}
 
+TEST(Weapon_tests, UseWeaponDefaultConstructor)
+{
+    Entity_Mock* character = new Character_Mock();
+    Weapon* weapon = new Weapon();
+    weapon->use(character);
+
+    EXPECT_EQ(character->getAttack(), 0);
 }
 
 #endif

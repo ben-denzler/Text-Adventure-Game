@@ -10,7 +10,7 @@ class Character_Mock: public Entity_Mock {
     public:
         virtual void display() { cout << "Character display!" << endl; }
         void heal(int h) { health += h; }
-        void setAttack(int a) { attack = a; }
+        virtual void setAttack(int a) { attack = a; }
         void setDefense(int d) { defense = d; }
         //void addItem() { inventory.addItem(); }
 };
