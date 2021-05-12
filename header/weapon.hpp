@@ -16,7 +16,7 @@ class Weapon : public baseItem {
         Weapon() : baseItem("", "Weapon"), attack(0) {}
         Weapon(string n, string t, int a) : baseItem(n, t), attack(a) {}
 
-        virtual void use(Entity_Mock* hero) {
+        virtual void use(Character_Mock* hero) {
             hero->setAttack(attack);
         }
 

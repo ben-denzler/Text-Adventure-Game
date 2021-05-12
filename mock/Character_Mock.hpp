@@ -3,7 +3,7 @@
 
 #include "Entity_Mock.hpp"
 
-class Character_Mock: public Entity_Mock{
+class Character_Mock: public Entity_Mock {
     private:
         string type = "Character";
         //vector<baseItem*> inventory;
