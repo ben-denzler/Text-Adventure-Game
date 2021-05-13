@@ -3,7 +3,6 @@
 
 #include "gtest/gtest.h"
 #include "../header/composite_armors.hpp"
-#include "../mock/Entity_Mock.hpp"
 #include "../mock/Character_Mock.hpp"
 
 TEST(ArmorTests, ArmorUseDefault) {

@@ -12,6 +12,7 @@ class Character_Mock: public Entity_Mock {
         void heal(int h) { health += h; }
         virtual void setAttack(int a) { attack = a; }
         void setDefense(int d) { defense = d; }
+        int getHealth(){return health;}
         //void addItem() { inventory.addItem(); }
 };
 

@@ -2,7 +2,6 @@
 #define __WEAPON_TESTS_HPP__
 
 #include "gtest/gtest.h"
-#include "../mock/Entity_Mock.hpp"
 #include "../mock/Character_Mock.hpp"
 #include "../header/weapon.hpp"
 

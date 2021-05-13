@@ -2,8 +2,8 @@
 #define BASEITEM_HPP
 
 #include <string>
-#include "../mocks/Entity_Mock.hpp"
-#include "../mocks/Character_Mock.hpp"
+#include "../mock/Entity_Mock.hpp"
+#include "../mock/Character_Mock.hpp"
 using namespace std;
 
 class baseItem {

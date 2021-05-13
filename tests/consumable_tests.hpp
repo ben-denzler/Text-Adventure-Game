@@ -3,7 +3,7 @@
 
 #include "gtest/gtest.h"
 #include <iostream>
-#include "../mocks/Character_Mock.hpp"
+#include "../mock/Character_Mock.hpp"
 #include "../header/consumable.hpp"
 
 /* Default constructor */
@@ -19,7 +19,7 @@ TEST(CONSUMABLE_TESTS, USE_FUNCTION)
     Obj->use(character);
 
     EXPECT_TRUE(20 == character->getHealth());
-    EXPECT_TRUE(2 == character->getDefense());
+    EXPECT_TRUE(0 == character->getDefense());
    
 }
 
