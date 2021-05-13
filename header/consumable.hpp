@@ -12,12 +12,10 @@ class consumable : public baseItem
         int health =  0;
 
     public:
-        consumable(): baseItem(" ", "consumable"), defense(0), health(0){}
-
+        consumable(): baseItem(" ", "consumable"), defense(0), health(0) {}
+        
         consumable(string _name, string _type, int _defense, int _health)
-        : baseItem(_name, _type), defense(_defense), health(_health)
-        {
-        }
+            : baseItem(_name, _type), defense(_defense), health(_health) {}
 
         virtual void use(Entity_Mock* e)
         {

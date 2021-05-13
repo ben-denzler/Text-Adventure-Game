@@ -14,6 +14,9 @@ class baseItem {
         baseItem(string n, string t) : name(n), type(t) {}
         virtual void display() = 0;
         virtual void use(Entity_Mock*) {}
+        virtual void addInventory(baseItem*){}
+        virtual void addItem(baseItem*) {}
+        virtual void removeItem(baseItem*) {}
         string getName() { return name; }
         string getType() { return type; }
 };
