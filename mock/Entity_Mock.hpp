@@ -8,8 +8,8 @@ class Entity_Mock {
     protected:
         string name = "Blob - the strongest blob alive!!";
         int health = 10;
-        int attack = 5000;
-        int defense = 2;
+        int attack = 0;
+        int defense = 0;
     public:
         virtual void display() = 0;
         virtual void setAttack(int) {}
