@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../tests/weapon_tests.hpp"
+#include "../tests/armor_tests.hpp"
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
