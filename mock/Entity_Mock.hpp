@@ -12,6 +12,8 @@ class Entity_Mock {
         int defense = 2;
     public:
         virtual void display() = 0;
+        virtual void setAttack(int) {}
+        virtual void setDefense(int) {}
         void takeDamage(int damage);
         bool isDead() { return (health <= 0); }
         int getAttack() { return attack; }

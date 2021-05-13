@@ -12,7 +12,7 @@ class Armor : public baseItem {
         Armor(string name, string type, int defense) 
             : baseItem(name, type), defense(defense) {}
 
-        virtual void use(Character* hero) {
+        virtual void use(Entity_Mock* hero) {
             hero->setDefense(defense);
         }
         
