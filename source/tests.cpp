@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "../tests/armor_tests.hpp"
+#include "../tests/consumable_tests.hpp"
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
