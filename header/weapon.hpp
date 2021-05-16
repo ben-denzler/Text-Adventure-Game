@@ -1,6 +1,7 @@
 #ifndef WEAPONS_HPP
 #define WEAPONS_HPP
 
+#include <iostream>
 #include <string>
 using namespace std;
 
