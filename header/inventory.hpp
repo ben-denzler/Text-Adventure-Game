@@ -66,7 +66,7 @@ void Inventory::removeItem(baseItem* itemToRemove) {
                 return;
             }
             // If item found, delete and erase from vector
-            else if (inventory.at(i) == itemToRemove) {
+            else if (inventory.at(i)->getName() == itemToRemove->getName()) {
                 cout << inventory.at(i)->getName() << " has been deleted!" << endl;
                 delete inventory.at(i);
                 inventory.erase(inventory.begin() + i);
