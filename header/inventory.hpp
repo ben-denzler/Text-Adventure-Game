@@ -61,7 +61,6 @@ void Inventory::addItem(baseItem* item)
     return;
 }
 
-
 void Inventory::removeItem(baseItem* itemToRemove) {
     for (unsigned int i = 0; i < inventory.size(); ++i) {
         // If inventory has sub-inventories, call recursively
