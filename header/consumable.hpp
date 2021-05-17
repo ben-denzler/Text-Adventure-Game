@@ -5,16 +5,16 @@
 #include <iostream>
 
 
-class consumable : public baseItem
+class Consumable : public baseItem
 {
     private:
         int defense = 0;
         int health =  0;
 
     public:
-        consumable(): baseItem(" ", "consumable"), defense(0), health(0) {}
+        Consumable(): baseItem(" ", "Consumable"), defense(0), health(0) {}
         
-        consumable(string _name, string _type, int _defense, int _health)
+        Consumable(string _name, string _type, int _defense, int _health)
             : baseItem(_name, _type), defense(_defense), health(_health) {}
 
         virtual void use(Entity_Mock* e)
