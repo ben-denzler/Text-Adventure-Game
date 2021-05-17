@@ -14,8 +14,9 @@ class Inventory : public baseItem {
         Inventory(string n) : baseItem(n, "Inventory") {}
         virtual void display();
         void addItem(baseItem*);
-        void addToInventory(baseItem* item) { inventory.push_back(item); }
+        void addToInventory(baseItem* item);
         void removeItem(baseItem*);
+        int getSize() { return inventory.size(); }
 };
 
 Inventory::~Inventory() {
@@ -29,6 +30,10 @@ void Inventory::display() {
     for (unsigned int i = 0; i < inventory.size(); i++) {
         inventory.at(i)->display();
     }
+}
+
+void Inventory::addToInventory(baseItem* item) { 
+    inventory.push_back(item);
 }
 
 void Inventory::addItem(baseItem* item)
@@ -60,13 +65,13 @@ void Inventory::removeItem(baseItem* itemToRemove) {
             inventory.at(i)->removeItem(itemToRemove);
         }
         else {
-            // Don't let player delete all items
-            if (inventory.size() == 1) {
+            // Don't let player delete all items in Armor or Weapons
+            if ((inventory.size() == 1) && (this->getName() != "Consumable")) {
                 cout << "It's a bad idea to delete all your items!" << endl;
                 return;
             }
             // If item found, delete and erase from vector
-            else if (inventory.at(i) == itemToRemove) {
+            else if (inventory.at(i)->getName() == itemToRemove->getName()) {
                 cout << inventory.at(i)->getName() << " has been deleted!" << endl;
                 delete inventory.at(i);
                 inventory.erase(inventory.begin() + i);

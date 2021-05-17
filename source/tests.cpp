@@ -2,6 +2,7 @@
 #include "../tests/armor_tests.hpp"
 #include "../tests/weapon_tests.hpp"
 #include "../tests/consumable_tests.hpp"
+#include "../tests/inventory_tests.hpp"
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
