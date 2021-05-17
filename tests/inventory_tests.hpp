@@ -22,7 +22,7 @@ baseItem* initInventory() {
     baseItem* weapon3 = new Weapon("Shadowmourne", "Weapon", 56);
 
     // Consumables
-    baseItem* consumable1 = new Consumable("Ravenous Anima Cell", "Consumable", 56, 17); //Maybe I did or didn't
+    baseItem* consumable1 = new Consumable("Ravenous Anima Cell", "Consumable", 56, 17);
     baseItem* consumable2 =  new Consumable("Phial of Serenity", "Consumable", 5, 90);
     baseItem* consumable3 = new Consumable("Potion of Phantom Fire", "Consumable", 0, 1726);
     
@@ -66,8 +66,6 @@ TEST(INVENTORY_TESTS, AddItem)
     baseItem* consumable3 = new Consumable("Potion of Phantom Fire", "Consumable", 0, 1726);
     Inventory->addItem(consumable3);
 
-    
-    
     Inventory->display();
 
     EXPECT_TRUE(buffer.str() == "Potion of Phantom Fire is now added to your inventory!\nArmor: Weave of Warped Fates, 77 DEF\nArmor: Carved Ivory Keepsake, 38 DEF\nArmor: Titanic Ocular Gland, 77 DEF\nWeapon: Warglaive of Azzinoth, 289 ATT\nWeapon: Thunderfury, 103 ATT\nWeapon: Shadowmourne, 56 ATT\nConsumable: Ravenous Anima Cell, 17 HP, 56 DEF\nConsumable: Phial of Serenity, 90 HP, 5 DEF\nConsumable: Potion of Phantom Fire, 1726 HP, 0 DEF\nConsumable: Potion of Phantom Fire, 1726 HP, 0 DEF\n");
@@ -76,7 +74,7 @@ TEST(INVENTORY_TESTS, AddItem)
     std::cout.rdbuf(sbuf);
 }
 
-TEST(INVENTORY_TESTS, Add_To_Inventory)
+TEST(INVENTORY_TESTS, AddToInventory)
 {     
     baseItem* Pets = new Inventory("Pets");
 
@@ -114,7 +112,6 @@ TEST(INVENTORY_TESTS, RemoveItemTypical) {
 
     // When done redirect cout to its old self
     std::cout.rdbuf(sbuf);
-
 }
 
 TEST(INVENTORY_TESTS, RemoveAllItems) {
@@ -150,11 +147,58 @@ TEST(INVENTORY_TESTS, RemoveNonexistentItem) {
     stringstream buffer;
     streambuf *sbuf = cout.rdbuf();
     cout.rdbuf(buffer.rdbuf());
+
     testInventory->display();
 
     EXPECT_TRUE(buffer.str() == "Armor: Weave of Warped Fates, 77 DEF\nArmor: Carved Ivory Keepsake, 38 DEF\nArmor: Titanic Ocular Gland, 77 DEF\nWeapon: Warglaive of Azzinoth, 289 ATT\nWeapon: Thunderfury, 103 ATT\nWeapon: Shadowmourne, 56 ATT\nConsumable: Ravenous Anima Cell, 17 HP, 56 DEF\nConsumable: Phial of Serenity, 90 HP, 5 DEF\nConsumable: Potion of Phantom Fire, 1726 HP, 0 DEF\n");
 
     // When done, redirect cout to its old self
+    std::cout.rdbuf(sbuf);
+}
+
+TEST(INVENTORY_TESTS, RemoveAllConsumables_1) {
+    baseItem* testInventory = initInventory();
+    baseItem* consumable1 = new Consumable("Ravenous Anima Cell", "Consumable", 56, 17);
+    baseItem* consumable2 =  new Consumable("Phial of Serenity", "Consumable", 5, 90);
+    baseItem* consumable3 = new Consumable("Potion of Phantom Fire", "Consumable", 0, 1726);
+    
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
+    testInventory->removeItem(consumable1);
+    testInventory->removeItem(consumable2);
+    testInventory->removeItem(consumable3);
+    delete consumable1;
+    delete consumable2;
+    delete consumable3;
+
+    EXPECT_TRUE(buffer.str() == "Ravenous Anima Cell has been deleted!\nPhial of Serenity has been deleted!\nPotion of Phantom Fire has been deleted!\n");
+
+    // When done redirect cout to its old self
+    std::cout.rdbuf(sbuf);
+}
+
+TEST(INVENTORY_TESTS, RemoveAllConsumables_2) {
+    baseItem* consumable1 = new Consumable("Ravenous Anima Cell", "Consumable", 56, 17);
+    baseItem* consumable2 =  new Consumable("Phial of Serenity", "Consumable", 5, 90);
+    baseItem* consumable3 = new Consumable("Potion of Phantom Fire", "Consumable", 0, 1726);
+    baseItem* Consumable = new Inventory("Consumable");
+    Consumable->addToInventory(consumable1);
+    Consumable->addToInventory(consumable2);
+    Consumable->addToInventory(consumable3);
+    
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
+    Consumable->removeItem(consumable1);
+    Consumable->removeItem(consumable2);
+    Consumable->removeItem(consumable3);
+
+    EXPECT_EQ(Consumable->getSize(), 0);
+
+    // When done redirect cout to its old self
     std::cout.rdbuf(sbuf);
 }
 
@@ -180,8 +224,6 @@ TEST(INVENTORY_TESTS, DisplayWeapon)
 
     // When done redirect cout to its old self
     std::cout.rdbuf(sbuf);
-    
-    
 }
 
 #endif
