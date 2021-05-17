@@ -1,5 +1,5 @@
-#ifndef COMPOSITE_ARMORS_HPP
-#define COMPOSITE_ARMORS_HPP
+#ifndef ARMORS_HPP
+#define ARMORS_HPP
 
 #include "baseItem.hpp"
 

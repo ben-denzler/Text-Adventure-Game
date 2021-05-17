@@ -14,7 +14,7 @@
 TEST(CONSUMABLE_TESTS, USE_FUNCTION)
 {
     Character_Mock* character = new Character_Mock();
-    consumable* Obj = new consumable("apple", "consumable", 0, 10);
+    baseItem* Obj = new consumable("apple", "consumable", 0, 10);
 
     Obj->use(character);
 
@@ -26,7 +26,7 @@ TEST(CONSUMABLE_TESTS, USE_FUNCTION)
 /* display function */
 TEST(CONSUMABLE_TESTS, DISPLAY_FUNCTION)
 {
-    consumable* Obj = new consumable("apple", "consumable", 0, 10);
+    baseItem* Obj = new consumable("apple", "consumable", 0, 10);
 
     Obj->display();
 
@@ -37,7 +37,7 @@ TEST(CONSUMABLE_TESTS, DISPLAY_FUNCTION)
 /*get name function */
 TEST(CONSUMABLE_TESTS, GET_NAME_FUNCTION)
 { 
-    consumable* Obj = new consumable("apple", "consumable", 0, 10);
+    baseItem* Obj = new consumable("apple", "consumable", 0, 10);
 
     EXPECT_TRUE("apple" == Obj->getName());
    

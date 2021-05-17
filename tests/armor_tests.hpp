@@ -2,7 +2,7 @@
 #define ARMOR_TESTS_HPP__
 
 #include "gtest/gtest.h"
-#include "../header/composite_armors.hpp"
+#include "../header/armor.hpp"
 #include "../mock/Character_Mock.hpp"
 
 TEST(ArmorTests, ArmorUseDefault) {
