@@ -3,7 +3,6 @@
 
 #include "entity.hpp"
 #include <cstdlib>
-
 #include <iostream>
 
 class Enemy: public Entity
