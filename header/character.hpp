@@ -17,7 +17,7 @@ class Character : public Entity
 
         virtual void display()
         {
-            cout << name << " : " << type << ", ", << health << "HP ," << attack << "ATT, " << defense << "DEF" << endl;
+            cout << name << " : " << type << ", " << health << "HP ," << attack << "ATT, " << defense << "DEF" << endl;
             cout << "------------------------------------------------------------------------------" << endl;
         }
         
