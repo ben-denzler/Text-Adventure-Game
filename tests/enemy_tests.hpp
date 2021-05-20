@@ -49,21 +49,21 @@ TEST(EnemyTests, EnemyCreationLV5) {
     EXPECT_TRUE(enemy->getDefense() >= 25 && enemy->getDefense() <= 75 );
 }
 
-TEST(EnemyTests, EnemyDisplay) {
-    Entity* enemy = new Enemy("Spooky Skeleton", 1);
-    enemy->display();
-    Entity* enemy1 = new Enemy("Boots", 1);
-    enemy1->display();
-    Entity* enemy2 = new Enemy("Dora", 2);
-    enemy2->display();
-    Entity* enemy3 = new Enemy("The Map", 2);
-    enemy3->display();
-    Entity* enemy4 = new Enemy("Swiper No Swiping", 3);
-    enemy4->display();
-    Entity* enemy5 = new Enemy("Blues Clues", 4);
-    enemy5->display();
-    EXPECT_TRUE(true == true);
-}
+// TEST(EnemyTests, EnemyDisplay) {
+//     Entity* enemy = new Enemy("Spooky Skeleton", 1);
+//     enemy->display();
+//     Entity* enemy1 = new Enemy("Boots", 1);
+//     enemy1->display();
+//     Entity* enemy2 = new Enemy("Dora", 2);
+//     enemy2->display();
+//     Entity* enemy3 = new Enemy("The Map", 2);
+//     enemy3->display();
+//     Entity* enemy4 = new Enemy("Swiper No Swiping", 3);
+//     enemy4->display();
+//     Entity* enemy5 = new Enemy("Blues Clues", 4);
+//     enemy5->display();
+//     EXPECT_TRUE(true == true);
+// }
 
 TEST(EnemyTests, EnemyTakeDamage)
 {

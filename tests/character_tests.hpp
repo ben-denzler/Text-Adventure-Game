@@ -143,18 +143,18 @@ TEST(CharacterTests, CharacterSetDefense) {
 TEST(CharacterTests, CharacterTakeDamage)
 {
     baseItem* my_inventory = initInventory2();
-    Entity* character = new Character("hi", 1);
+    Entity* character = new Character("Boots", "Stinky Footwear", 15, 3, 40, my_inventory);
     character->takeDamage(15);
 
-    EXPECT_TRUE((character->getHealth() <= 0) && (character->getHealth() >= -10) );
+    EXPECT_TRUE(character->getHealth() == 0);
 }
 
 TEST(CharacterTests, CharacterIsDead) {
     baseItem* my_inventory = initInventory2();
-    Entity* character = new Character("Boots", 1);
+    Entity* character = new Character("Boots", "Abominable Henchman of Dora", 15, 3, 40, my_inventory);
 
     EXPECT_FALSE(character->isDead());
-    character->takeDamage(50);
+    character->takeDamage(15);
     EXPECT_TRUE(character->isDead());
 }
 
