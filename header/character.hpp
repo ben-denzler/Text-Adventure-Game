@@ -19,14 +19,14 @@ class Character : public Entity
 
         virtual void display()
         {
-            cout << name << " : " << type << ", " << health << "HP ," << attack << "ATT, " << defense << "DEF" << endl;
-            cout << "------------------------------------------------------------------------------" << endl;
+            cout << name << " : " << type << ", " << health << " HP, " << attack << " ATT, " << defense << " DEF" << endl;
+            cout << "----------------------------------------------------" << endl;
         }
         
         // Setters
-        void heal(int h) { health += h; }
-        void setAttack(int a) { attack = a; }
-        void setDefense(int d) { defense = d; }
+        virtual void heal(int h) { health += abs(h); }
+        virtual void setAttack(int a) { attack = abs(a); }
+        virtual void setDefense(int d) { defense = abs(d); }
 
         // Getters
         virtual string getType() { return type; }

@@ -77,4 +77,85 @@ TEST(CharacterTests, CharacterCreationDefault) {
     EXPECT_TRUE(character->getInventory() == nullptr);
 }
 
+TEST(CharacterTests, CharacterDisplay) {
+    baseItem* my_inventory = initInventory2();
+    Entity* character = new Character("Bob The Builder", "Builder", 100, 3, 40, my_inventory);
+
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
+    character->display();
+    
+    EXPECT_TRUE(buffer.str() == "Bob The Builder : Builder, 100 HP, 3 ATT, 40 DEF\n----------------------------------------------------\n");
+
+    std::cout.rdbuf(sbuf);
+}
+
+TEST(CharacterTests, DefaultCharacterHeal) {
+    baseItem* my_inventory = initInventory2();
+    Entity* character = new Character();
+
+    character->heal(20);
+    EXPECT_TRUE(character->getHealth() == 20);
+    character->heal(20);
+    EXPECT_TRUE(character->getHealth() == 40);
+    character->heal(-2);
+    EXPECT_TRUE(character->getHealth() == 42);
+    character->heal(0);
+    EXPECT_TRUE(character->getHealth() == 42);
+}
+
+TEST(CharacterTests, CharacterHeal) {
+    baseItem* my_inventory = initInventory2();
+    Entity* character = new Character("Bob The Builder", "Builder", 100, 3, 40, my_inventory);
+
+    character->heal(20);
+    EXPECT_TRUE(character->getHealth() == 120);
+    character->heal(20);
+    EXPECT_TRUE(character->getHealth() == 140);
+    character->heal(-2);
+    EXPECT_TRUE(character->getHealth() == 142);
+    character->heal(0);
+    EXPECT_TRUE(character->getHealth() == 142);
+}
+
+TEST(CharacterTests, CharacterSetAttack) {
+    
+    Entity* character = new Character();
+    
+    character->setAttack(10);
+    EXPECT_TRUE(character->getAttack() ==  10);
+    character->setAttack(1);
+    EXPECT_TRUE(character->getAttack() ==  1);
+}
+
+TEST(CharacterTests, CharacterSetDefense) {
+
+    Entity* character = new Character();
+    
+    character->setDefense(100);
+    EXPECT_TRUE(character->getDefense() ==  100);
+    character->setDefense(50);
+    EXPECT_TRUE(character->getDefense() ==  50);
+}
+
+TEST(CharacterTests, CharacterTakeDamage)
+{
+    baseItem* my_inventory = initInventory2();
+    Entity* character = new Character("Boots", "Stinky Footwear", 15, 3, 40, my_inventory);
+    character->takeDamage(15);
+
+    EXPECT_TRUE(character->getHealth() == 0);
+}
+
+TEST(CharacterTests, CharacterIsDead) {
+    baseItem* my_inventory = initInventory2();
+    Entity* character = new Character("Boots", "Abominable Henchman of Dora", 15, 3, 40, my_inventory);
+
+    EXPECT_FALSE(character->isDead());
+    character->takeDamage(15);
+    EXPECT_TRUE(character->isDead());
+}
+
 #endif
