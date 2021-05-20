@@ -140,4 +140,22 @@ TEST(CharacterTests, CharacterSetDefense) {
     EXPECT_TRUE(character->getDefense() ==  50);
 }
 
+TEST(CharacterTests, CharacterTakeDamage)
+{
+    baseItem* my_inventory = initInventory2();
+    Entity* character = new Character("hi", 1);
+    character->takeDamage(15);
+
+    EXPECT_TRUE((character->getHealth() <= 0) && (character->getHealth() >= -10) );
+}
+
+TEST(CharacterTests, CharacterIsDead) {
+    baseItem* my_inventory = initInventory2();
+    Entity* character = new Character("Boots", 1);
+
+    EXPECT_FALSE(character->isDead());
+    character->takeDamage(50);
+    EXPECT_TRUE(character->isDead());
+}
+
 #endif
