@@ -3,6 +3,7 @@
 #include "../tests/weapon_tests.hpp"
 #include "../tests/consumable_tests.hpp"
 #include "../tests/inventory_tests.hpp"
+#include "../tests/character_tests.hpp"
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);

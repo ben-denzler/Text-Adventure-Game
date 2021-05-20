@@ -21,8 +21,15 @@ class Entity
         virtual void display() = 0;
         void takeDamage(int damage) { health -= damage; }
         bool isDead() { return (health <= 0); }
+
+        // Getters
         int getAttack() { return attack; }
         int getDefense() { return defense; }
+        int getHealth() { return health; }
+        string getName() { return name; }
+        virtual string getType() {}
+        virtual baseItem* getInventory() { /*THROW EXCEPTIONS (if this is not a character)*/ }
+
 };
 
 
