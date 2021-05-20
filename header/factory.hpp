@@ -1,0 +1,68 @@
+#ifndef FACTORY_HPP
+#define FACTORY_HPP
+
+#include "character.hpp"
+#include "enemy.hpp"
+#include "baseItem.hpp"
+#include "armor.hpp"
+#include "weapon.hpp"
+#include "consumable.hpp"
+#include "inventory.hpp"
+
+class AbstractFactory {
+    public:
+        virtual Entity* createEnemy(string) = 0;
+        virtual Entity* createCharacter(string) = 0;
+};
+
+class EntityFactory : public AbstractFactory {
+    private:
+        string arrName[3] = {"Bird", "Cat", "Dinosaur"};
+        string arrCharTypes[3] = {"Rougemouse", "Swordsmouse", "Monkmouse"};
+    public:
+        virtual Entity* createEnemy(int level) {
+            string name = arrName[rand() % 3];
+            return new Enemy(name, level);
+        }
+        virtual Entity* createCharacter(string name, int type);
+};
+
+Entity* EntityFactory::createCharacter(string name, int type) {
+    // Initialize inventories
+    baseItem* CharacterInventory = new Inventory("Character");
+    baseItem* Armor = new Inventory("Armor");
+    baseItem* Weapon = new Inventory("Weapon");
+    baseItem* Consumable = new Inventory("Consumable");
+    CharacterInventory->addItem(Armor);
+    CharacterInventory->addItem(Weapon);
+    CharacterInventory->addItem(Consumable);
+
+    // Roguemouse
+    if (type == 1) { 
+        CharacterInventory->addItem(new Weapon("Thunderfury", "Weapon", 10));
+        CharacterInventory->addItem(new Armor("Titanic Ocular Gland", "Armor", 6));
+        CharacterInventory->addItem(new Consumable("Ravenous Anima Cell", "Consumable", 56, 17));
+        
+        return new Character(name, "Rougemouse", 20, 20, 20, CharacterInventory);
+    }
+    // Swordsmouse
+    else if (type == 2)
+    {
+        CharacterInventory->addItem(new Weapon("Thunderfury", "Weapon", 10));
+        CharacterInventory->addItem(new Armor("Titanic Ocular Gland", "Armor", 6));
+        CharacterInventory->addItem(new Consumable("Ravenous Anima Cell", "Consumable", 56, 17));
+        
+        return new Character(name, "Swordmouse", 20, 20, 20, CharacterInventory);
+    }
+    // Monkmouse
+    else
+    {
+        CharacterInventory->addItem(new Weapon("Thunderfury", "Weapon", 10));
+        CharacterInventory->addItem(new Armor("Titanic Ocular Gland", "Armor", 6));
+        CharacterInventory->addItem(new Consumable("Ravenous Anima Cell", "Consumable", 56, 17));
+        
+        return new Character(name, "Monkmouse", 20, 20, 20, CharacterInventory);
+    }
+}
+
+#endif
