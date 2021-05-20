@@ -13,7 +13,6 @@ class Entity
       int defense = 0;
 
     public:
-    
         // Constructor
         Entity(string _name, int _health, int _attack, int _defense) 
             : name(_name), health(_health), attack(_attack), defense(_defense) {}
@@ -21,6 +20,11 @@ class Entity
         virtual void display() = 0;
         void takeDamage(int damage) { health -= damage; }
         bool isDead() { return (health <= 0); }
+
+        // Setters
+        virtual void heal(int h) {}
+        virtual void setAttack(int a) {}
+        virtual void setDefense(int d) {}
 
         // Getters
         int getAttack() { return attack; }
