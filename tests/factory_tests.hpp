@@ -15,7 +15,7 @@ TEST(FactoryTests, SwordsmouseCreation) {
 
 TEST(FactoryTests, MonkmouseCreation) {
     AbstractFactory* my_entity_factory = new EntityFactory();
-    Entity* enemy1 = my_entity_factory->createCharacter("MICKEY MOUSE", 3);
+    Entity* enemy1 = my_entity_factory->createCharacter("Mickey Mouse", 3);
 }
 
 TEST(FactoryTests, EnemyCreation) {

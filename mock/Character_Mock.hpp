@@ -2,6 +2,8 @@
 #define CHARACTER_MOCK_HPP
 
 #include "Entity_Mock.hpp"
+#include <iostream>
+using namespace std;
 
 class Character_Mock: public Entity_Mock {
     private:
@@ -12,8 +14,7 @@ class Character_Mock: public Entity_Mock {
         void heal(int h) { health += h; }
         virtual void setAttack(int a) { attack = a; }
         void setDefense(int d) { defense = d; }
-        int getHealth(){return health;}
-        //void addItem() { inventory.addItem(); }
+        int getHealth() { return health; }
 };
 
 #endif

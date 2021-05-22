@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
 
 #include "baseItem.hpp"
 #include "../mock/Entity_Mock.hpp"
