@@ -39,29 +39,29 @@ Entity* EntityFactory::createCharacter(string name, int type) {
 
     // Roguemouse
     if (type == 1) { 
-        CharacterInventory->addItem(new Weapon("Thunderfury", "Weapon", 10));
-        CharacterInventory->addItem(new Armor("Titanic Ocular Gland", "Armor", 6));
-        CharacterInventory->addItem(new Consumable("Ravenous Anima Cell", "Consumable", 56, 17));
+        CharacterInventory->addItem(new Weapon("Sharpened Spoon", "Weapon", 20));
+        CharacterInventory->addItem(new Armor("Leather Elbowpads", "Armor", 20));
+        CharacterInventory->addItem(new Consumable("Magic Mushroom", "Consumable", 10, 17));
         
-        return new Character(name, "Rougemouse", 20, 20, 20, CharacterInventory);
+        return new Character(name, "Rougemouse", 100, 20, 20, CharacterInventory);
     }
     // Swordsmouse
     else if (type == 2)
     {
-        CharacterInventory->addItem(new Weapon("Thunderfury", "Weapon", 10));
-        CharacterInventory->addItem(new Armor("Titanic Ocular Gland", "Armor", 6));
-        CharacterInventory->addItem(new Consumable("Ravenous Anima Cell", "Consumable", 56, 17));
+        CharacterInventory->addItem(new Weapon("Wooden Toothpick", "Weapon", 20));
+        CharacterInventory->addItem(new Armor("Mini Green Tunic", "Armor", 20));
+        CharacterInventory->addItem(new Consumable("Glass of Milk", "Consumable", 10, 17));
         
-        return new Character(name, "Swordmouse", 20, 20, 20, CharacterInventory);
+        return new Character(name, "Swordmouse", 100, 20, 20, CharacterInventory);
     }
     // Monkmouse
     else
     {
-        CharacterInventory->addItem(new Weapon("Thunderfury", "Weapon", 10));
-        CharacterInventory->addItem(new Armor("Titanic Ocular Gland", "Armor", 6));
-        CharacterInventory->addItem(new Consumable("Ravenous Anima Cell", "Consumable", 56, 17));
+        CharacterInventory->addItem(new Weapon("Words of Wisdom", "Weapon", 20));
+        CharacterInventory->addItem(new Armor("Torn Robe", "Armor", 20));
+        CharacterInventory->addItem(new Consumable("Green Tea", "Consumable", 10, 17));
         
-        return new Character(name, "Monkmouse", 20, 20, 20, CharacterInventory);
+        return new Character(name, "Monkmouse", 100, 20, 20, CharacterInventory);
     }
 }
 
