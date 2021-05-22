@@ -11,8 +11,8 @@
 
 class AbstractFactory {
     public:
-        virtual Entity* createEnemy(string) = 0;
-        virtual Entity* createCharacter(string) = 0;
+        virtual Entity* createEnemy(int) = 0;
+        virtual Entity* createCharacter(string, int) = 0;
 };
 
 class EntityFactory : public AbstractFactory {
@@ -41,7 +41,7 @@ Entity* EntityFactory::createCharacter(string name, int type) {
     if (type == 1) { 
         CharacterInventory->addItem(new Weapon("Sharpened Spoon", "Weapon", 20));
         CharacterInventory->addItem(new Armor("Leather Elbowpads", "Armor", 20));
-        CharacterInventory->addItem(new Consumable("Magic Mushroom", "Consumable", 10, 17));
+        CharacterInventory->addItem(new Consumable("Magic Mushnoom", "Consumable", 10, 17));
         
         return new Character(name, "Rougemouse", 100, 20, 20, CharacterInventory);
     }
