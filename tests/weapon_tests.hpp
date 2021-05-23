@@ -2,7 +2,7 @@
 #define __WEAPON_TESTS_HPP__
 
 #include "gtest/gtest.h"
-#include "../mock/Character_Mock.hpp"
+#include "../header/character.hpp"
 #include "../header/weapon.hpp"
 
 TEST(Weapon_tests, display)
@@ -21,7 +21,7 @@ TEST(Weapon_tests, display)
 
 TEST(Weapon_tests, UseWeapon)
 {
-    Entity_Mock* character = new Character_Mock();
+    Entity* character = new Character();
     baseItem* weapon = new Weapon("Good weapon", "wood", 2);
     weapon->use(character);
 
@@ -30,7 +30,7 @@ TEST(Weapon_tests, UseWeapon)
 
 TEST(Weapon_tests, UseWeaponDefaultConstructor)
 {
-    Entity_Mock* character = new Character_Mock();
+    Entity* character = new Character();
     baseItem* weapon = new Weapon();
     weapon->use(character);
 

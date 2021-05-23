@@ -17,7 +17,7 @@ class Consumable : public baseItem
         Consumable(string _name, string _type, int _defense, int _health)
             : baseItem(_name, _type), defense(_defense), health(_health) {}
 
-        virtual void use(Entity_Mock* e)
+        virtual void use(Entity* e)
         {
             e->heal(health);
             e->setDefense(e->getDefense() + defense);

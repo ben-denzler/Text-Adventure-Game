@@ -3,7 +3,7 @@
 
 #include "gtest/gtest.h"
 #include <iostream>
-#include "../mock/Character_Mock.hpp"
+#include "../header/character.hpp"
 #include "../header/consumable.hpp"
 
 /* Default constructor */
@@ -13,7 +13,7 @@
 /*use function*/
 TEST(CONSUMABLE_TESTS, USE_FUNCTION)
 {
-    Character_Mock* character = new Character_Mock();
+    Entity* character = new Character();
     baseItem* Obj = new Consumable("apple", "consumable", 0, 10);
 
     Obj->use(character);
