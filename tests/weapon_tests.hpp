@@ -7,8 +7,16 @@
 
 TEST(Weapon_tests, display)
 {
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
     baseItem* weapon = new Weapon("Good weapon", "wood", 2);
     weapon->display();
+
+    EXPECT_TRUE(buffer.str() == "wood: Good weapon, 2 ATT\n");
+
+    std::cout.rdbuf(sbuf);
 }
 
 TEST(Weapon_tests, UseWeapon)

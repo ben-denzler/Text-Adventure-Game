@@ -26,12 +26,17 @@ TEST(CONSUMABLE_TESTS, USE_FUNCTION)
 /* display function */
 TEST(CONSUMABLE_TESTS, DISPLAY_FUNCTION)
 {
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
     baseItem* Obj = new Consumable("apple", "consumable", 0, 10);
 
     Obj->display();
-
-   EXPECT_TRUE(true == true);
    
+   EXPECT_TRUE(buffer.str() == "consumable: apple, 10 HP, 0 DEF\n");
+
+    std::cout.rdbuf(sbuf);
 }
 
 /*get name function */

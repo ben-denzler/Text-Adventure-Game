@@ -6,6 +6,10 @@
 #include "../header/entity.hpp"
 
 TEST(FactoryTests, RoguemouseCreation) {
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
     AbstractFactory* my_entity_factory = new EntityFactory();
     Entity* character1 = my_entity_factory->createCharacter("Benjamin", 1);
     
@@ -16,9 +20,15 @@ TEST(FactoryTests, RoguemouseCreation) {
     EXPECT_TRUE(character1->getDefense() == 5);
     ASSERT_TRUE(character1->getInventory() != nullptr);
     EXPECT_TRUE(character1->getInventory()->getSize() == 3);
+
+    std::cout.rdbuf(sbuf);
 }
 
 TEST(FactoryTests, SwordsmouseCreation) {
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
     AbstractFactory* my_entity_factory = new EntityFactory();
     Entity* character1 = my_entity_factory->createCharacter("ADD NAME", 2);     // Pass in name and type (user choice)
     EXPECT_TRUE(character1->getName() == "ADD NAME");
@@ -28,9 +38,15 @@ TEST(FactoryTests, SwordsmouseCreation) {
     EXPECT_TRUE(character1->getDefense() == 10);
     EXPECT_TRUE(character1->getInventory() != nullptr);
     EXPECT_TRUE(character1->getInventory()->getSize() == 3);
+
+    std::cout.rdbuf(sbuf);
 }
 
 TEST(FactoryTests, MonkmouseCreation) {
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
     AbstractFactory* my_entity_factory = new EntityFactory();
     Entity* character1 = my_entity_factory->createCharacter("Mickey Mouse", 3);
     
@@ -41,9 +57,15 @@ TEST(FactoryTests, MonkmouseCreation) {
     EXPECT_TRUE(character1->getDefense() == 15);
     ASSERT_TRUE(character1->getInventory() != nullptr);
     EXPECT_TRUE(character1->getInventory()->getSize() == 3);
+
+    std::cout.rdbuf(sbuf);
 }
 
 TEST(FactoryTests, EnemyCreation) {
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
     AbstractFactory* my_entity_factory = new EntityFactory();
     
     Entity* enemy1 = my_entity_factory->createEnemy(1);
@@ -75,6 +97,8 @@ TEST(FactoryTests, EnemyCreation) {
     EXPECT_TRUE(enemy5->getHealth() >= 25 && enemy5->getHealth() <= 75 );
     EXPECT_TRUE(enemy5->getAttack() >= 25 && enemy5->getAttack() <= 75 );
     EXPECT_TRUE(enemy5->getDefense() >= 25 && enemy5->getDefense() <= 75 );
+    
+    std::cout.rdbuf(sbuf);
 }
 
 #endif
