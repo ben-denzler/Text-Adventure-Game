@@ -1,9 +1,8 @@
 #ifndef CONSUMABLE_HPP
 #define CONSUMABLE_HPP
-#include "baseItem.hpp"
-#include "../mock/Character_Mock.hpp"
-#include <iostream>
 
+#include "baseItem.hpp"
+#include <iostream>
 
 class Consumable : public baseItem
 {
@@ -44,6 +43,5 @@ class Consumable : public baseItem
         }
         
 };
-
 
 #endif

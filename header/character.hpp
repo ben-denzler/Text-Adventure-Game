@@ -2,7 +2,6 @@
 #define CHARACTER_HPP
 
 #include "baseItem.hpp"
-#include "entity.hpp"
 #include <iostream>
 
 class Character : public Entity

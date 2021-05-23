@@ -36,5 +36,4 @@ class Entity
 
 };
 
-
 #endif // ENTITY_HPP

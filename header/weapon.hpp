@@ -5,8 +5,6 @@
 #include <string>
 
 #include "baseItem.hpp"
-#include "../header/Entity.hpp"
-#include "../header/Character.hpp"
 
 class Weapon : public baseItem {
     protected:
