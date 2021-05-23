@@ -18,7 +18,7 @@ class AbstractFactory {
 class EntityFactory : public AbstractFactory {
     private:
         string arrName[3] = {"Bird", "Cat", "Dinosaur"};
-        string arrCharTypes[3] = {"Rougemouse", "Swordsmouse", "Monkmouse"};
+        enum classNames { Roguemouse, Swordsmouse, Monkmouse };
     public:
         virtual Entity* createEnemy(int level) {
             string name = arrName[rand() % 3];
@@ -42,7 +42,7 @@ Entity* EntityFactory::createCharacter(string name, int type) {
         CharacterInventory->addItem(new ::Weapon("Sharpened Spoon", "Weapon", 20));
         CharacterInventory->addItem(new ::Armor("Leather Elbowpads", "Armor", 20));
         CharacterInventory->addItem(new ::Consumable("Magic Mushnoom", "Consumable", 10, 17));
-        return new Character(name, "Rougemouse", 100, 20, 20, CharacterInventory);
+        return new Character(name, "Roguemouse", 100, 20, 5, CharacterInventory);
     }
     // Swordsmouse
     else if (type == 2)
@@ -50,7 +50,7 @@ Entity* EntityFactory::createCharacter(string name, int type) {
         CharacterInventory->addItem(new ::Weapon("Wooden Toothpick", "Weapon", 20));
         CharacterInventory->addItem(new ::Armor("Mini Green Tunic", "Armor", 20));
         CharacterInventory->addItem(new ::Consumable("Glass of Milk", "Consumable", 10, 17));
-        return new Character(name, "Swordmouse", 100, 20, 20, CharacterInventory);
+        return new Character(name, "Swordmouse", 50, 75, 10, CharacterInventory);
     }
     // Monkmouse
     else
@@ -58,7 +58,7 @@ Entity* EntityFactory::createCharacter(string name, int type) {
         CharacterInventory->addItem(new ::Weapon("Words of Wisdom", "Weapon", 20));
         CharacterInventory->addItem(new ::Armor("Torn Robe", "Armor", 20));
         CharacterInventory->addItem(new ::Consumable("Green Tea", "Consumable", 10, 17));
-        return new Character(name, "Monkmouse", 100, 20, 20, CharacterInventory);
+        return new Character(name, "Monkmouse", 45, 30, 15, CharacterInventory);
     }
 }
 
