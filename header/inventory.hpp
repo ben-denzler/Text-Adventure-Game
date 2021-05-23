@@ -47,7 +47,7 @@ void Inventory::addItem(baseItem* item)
     /*Loop through inventory vector*/
     for (unsigned int i = 0; i < this->inventory.size(); i++)
     {
-        if (this->inventory.at(i)->gretName().find(item->getType()) != std::string::npos)
+        if (this->inventory.at(i)->getName().find(item->getType()) != std::string::npos)
         {
             this->inventory.at(i)->addToInventory(item);
             cout << item->getName() << " is now added to your inventory" << "!" << endl;            

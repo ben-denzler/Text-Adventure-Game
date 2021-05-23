@@ -3,7 +3,6 @@
 
 #include <string>
 #include "baseItem.hpp"
-using namespace std;
 
 class Entity
 {
