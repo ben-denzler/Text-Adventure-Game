@@ -8,6 +8,8 @@ class Character : public Entity
 {
     private:
         baseItem* inventory = nullptr;   // Points to an Inventory object
+        baseItem* currArmor = nullptr;
+        baseItem* currWeapon = nullptr;
         string type = "";
 
     public:
@@ -26,6 +28,8 @@ class Character : public Entity
         virtual void heal(int h) { health += abs(h); }
         virtual void setAttack(int a) { attack = abs(a); }
         virtual void setDefense(int d) { defense = abs(d); }
+        virtual void setCurrentArmor(baseItem* a) { currWeapon = a; }
+        virtual void setCurrentWeapon(baseItem* w) { currWeapon = w; }
 
         // Getters
         virtual string getType() { return type; }

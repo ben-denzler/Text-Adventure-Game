@@ -14,6 +14,7 @@ class Armor : public baseItem {
 
         virtual void use(Entity* hero) {
             hero->setDefense(defense);
+            hero->setCurrentArmor(this);
         }
         
         virtual void display() {

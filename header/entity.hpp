@@ -27,6 +27,8 @@ class Entity
         virtual void heal(int h) {}
         virtual void setAttack(int a) {}
         virtual void setDefense(int d) {}
+        virtual void setCurrentArmor(baseItem* a) {}
+        virtual void setCurrentWeapon(baseItem* w) {}
 
         // Getters
         int getAttack() { return attack; }
