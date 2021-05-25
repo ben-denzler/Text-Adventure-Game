@@ -20,7 +20,7 @@ class Entity
             : name(_name), health(_health), attack(_attack), defense(_defense) {}
 
         virtual void display() = 0;
-        void takeDamage(int damage) { health -= damage; }
+        void takeDamage(int damage) { if (damage > 0) health -= damage; }
         bool isDead() { return (health <= 0); }
 
         // Setters

@@ -1,19 +1,25 @@
+#ifndef GAME_CONTROLLER_CPP
+#define GAME_CONTROLLER_CPP
+
 #include "../header/game_controller.hpp"
 #include "../header/factory.hpp"
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <cctype>
 
 using namespace std;
 
 void GameController::createCharacter() {
     string name;
-    int type;
+    char type;
 
     // Ask for user input
     cout << "Please type the name of your character. Press Enter to continue." << endl;
     getline(cin, name);
 
     // Display description of classes
+    cout << endl;
     cout << "Choose the corresponding number of your class." << endl;
     cout << "1) Rougemouse - a fast mouse who specializes in small weaponary." << endl;
     cout << "2) Swordmouse - a gallant mouse who specializes in sword combat." << endl;
@@ -21,17 +27,20 @@ void GameController::createCharacter() {
 
     // Handle invalid input for type
     cin >> type;
-    while ((type != 1) && (type != 2) && (type != 3)) {
+    while (!isdigit(type) || ((type != '1') && (type != '2') && (type != '3'))) {
         cout << "Invalid input, try again." << endl;
         cin >> type;
     }
+    cout << endl;
 
     // Create character from factory
     AbstractFactory* my_factory = new EntityFactory();
-    currCharacter = my_factory->createCharacter(name, type);
+    currCharacter = my_factory->createCharacter(name, atoi(&type));
 
     // Confirms that the name and type is correct
+    cout << endl;
     cout << currCharacter->getName() + " is a " + currCharacter->getType() << "!" << endl;
+    //Ex: bob is a Rougmouse!
 
     // Delete anything created down here :)
     delete my_factory;
@@ -44,6 +53,9 @@ void GameController::createEnemies() {
     enemiesInGame.push_back(my_factory->createEnemy(3));
     enemiesInGame.push_back(my_factory->createEnemy(2));
     enemiesInGame.push_back(my_factory->createEnemy(1));
+
+    // Delete anything created down here :)
+    delete my_factory;
 }
 
 std::string GameController::getNarrative(std::string fileName) {
@@ -58,27 +70,32 @@ std::string GameController::getNarrative(std::string fileName) {
 // Returns 1 if character is dead
 // Returns 3 if character wants to flee.
 int GameController::battle() {
+    
     //get enemy from narrative
-    currEnemy = enemiesInGame.pop_back();
+    currEnemy = enemiesInGame.back();
+    enemiesInGame.pop_back();
 
     if (currEnemy != nullptr) {
         cout << "BATTLE HAS STARTED! " << currEnemy->getName() << " is attacking you." << endl;
         while (!currCharacter->isDead() && !currEnemy->isDead()) {
             
             // Display stats and options
-            cout << "Character stats:" << currCharacter->display() << endl;
-            cout << "Enemy stats: " << currEnemy->display() << endl;
-            battleChoice = displayBattleOptions();
+            cout << "Character stats:"; currCharacter->display(); cout << endl;
+            cout << "Enemy stats: "; currEnemy->display(); cout << endl;
+            int battleChoice = displayBattleOptions();
 
             // Attack
             if (battleChoice == 1) {
                 currEnemy->takeDamage(currCharacter->getAttack());
-                cout << "You dealt " << 
+                cout << "You dealt " << currCharacter->getAttack() << "damage!" << endl;
             }
 
             // Defend
             else if (battleChoice == 2) {
+                cout << "You chose to defend." << endl;
+                cout << currEnemy->getName() << " attacks!" << endl;
                 currCharacter->takeDamage(currEnemy->getAttack() - currCharacter->getDefense());
+                cout << "Player loses "  << (currEnemy->getAttack() - currCharacter->getDefense()) << " HP." << endl;
             }
 
             // Flee
@@ -94,10 +111,12 @@ int GameController::battle() {
                 
             }
 
-            // Enemy's turn
-            cout << currEnemy->getName() << " attacks!" << endl;
-            currCharacter->takeDamage(currEnemy->getAttack());
-            cout << "Player losses "  << currEnemy->getAttack() << " HP" << endl;
+            if (battleChoice != 2) {
+                // Enemy's turn
+                cout << currEnemy->getName() << " attacks!" << endl;
+                currCharacter->takeDamage(currEnemy->getAttack());
+                cout << "Player loses "  << currEnemy->getAttack() << " HP" << endl;
+            }
         }
         
         if (currEnemy->isDead()) {
@@ -132,3 +151,5 @@ int GameController::displayBattleOptions(){
     
     return num;
 }
+
+#endif

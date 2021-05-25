@@ -3,7 +3,6 @@
 
 #include "character.hpp"
 #include "enemy.hpp"
-#include "baseItem.hpp"
 #include "armor.hpp"
 #include "weapon.hpp"
 #include "consumable.hpp"

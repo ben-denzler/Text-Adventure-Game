@@ -1,7 +1,7 @@
 #ifndef GAME_CONTROLLER_HPP
 #define GAME_CONTROLLER_HPP
 
-#include "entity.hpp"
+#include "baseItem.hpp"
 #include <vector>
 
 using namespace std;
