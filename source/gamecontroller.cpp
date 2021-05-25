@@ -40,7 +40,6 @@ void GameController::createCharacter() {
     // Confirms that the name and type is correct
     cout << endl;
     cout << currCharacter->getName() + " is a " + currCharacter->getType() << "!" << endl;
-    //Ex: bob is a Rougmouse!
 
     // Delete anything created down here :)
     delete my_factory;
@@ -135,7 +134,7 @@ int GameController::battle() {
 }
 
 int GameController::displayBattleOptions(){
-    int num = 0;
+    char num;
     
     cout << "Choose one of the options below:" << endl;
     cout << "1) ATTACK" << endl;
@@ -144,12 +143,12 @@ int GameController::displayBattleOptions(){
     cout << "4) Access Inventory" << endl;
     
     cin >> num;
-    while ((num != 1) && (num != 2) && (num != 3) && (num != 4)) {
+    while (!isdigit(num) || ((num != '1') && (num != '2') && (num != '3') && (num != 4))) {
         cout << "Invalid input, try again." << endl;
         cin >> num;
     }
     
-    return num;
+    return atoi(&num);
 }
 
 #endif
