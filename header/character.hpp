@@ -2,7 +2,6 @@
 #define CHARACTER_HPP
 
 #include "baseItem.hpp"
-#include "entity.hpp"
 #include <iostream>
 
 class Character : public Entity
@@ -30,7 +29,7 @@ class Character : public Entity
 
         // Getters
         virtual string getType() { return type; }
-        virtual baseItem* getInventory() { return inventory; }
+        baseItem* getInventory() { return inventory; }
 };
-
+    
 #endif // CHARACTER_HPP

@@ -1,9 +1,8 @@
 #ifndef CONSUMABLE_HPP
 #define CONSUMABLE_HPP
-#include "baseItem.hpp"
-#include "../mock/Character_Mock.hpp"
-#include <iostream>
 
+#include "baseItem.hpp"
+#include <iostream>
 
 class Consumable : public baseItem
 {
@@ -17,7 +16,7 @@ class Consumable : public baseItem
         Consumable(string _name, string _type, int _defense, int _health)
             : baseItem(_name, _type), defense(_defense), health(_health) {}
 
-        virtual void use(Entity_Mock* e)
+        virtual void use(Entity* e)
         {
             e->heal(health);
             e->setDefense(e->getDefense() + defense);
@@ -44,6 +43,5 @@ class Consumable : public baseItem
         }
         
 };
-
 
 #endif

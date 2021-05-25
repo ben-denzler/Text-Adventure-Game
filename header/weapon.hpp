@@ -5,8 +5,6 @@
 #include <string>
 
 #include "baseItem.hpp"
-#include "../mock/Entity_Mock.hpp"
-#include "../mock/Character_Mock.hpp"
 
 class Weapon : public baseItem {
     protected:
@@ -15,7 +13,7 @@ class Weapon : public baseItem {
         Weapon() : baseItem("", "Weapon"), attack(0) {}
         Weapon(string n, string t, int a) : baseItem(n, t), attack(a) {}
 
-        virtual void use(Entity_Mock* hero) {
+        virtual void use(Entity* hero) {
             hero->setAttack(attack);
         }
 

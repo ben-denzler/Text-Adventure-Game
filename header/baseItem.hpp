@@ -2,10 +2,7 @@
 #define BASEITEM_HPP
 
 #include <string>
-#include "../mock/Entity_Mock.hpp"
-#include "../mock/Character_Mock.hpp"
-
-using namespace std;
+#include "entity.hpp"
 
 class baseItem {
     protected:
@@ -14,7 +11,7 @@ class baseItem {
     public:
         baseItem(string n, string t) : name(n), type(t) {}
         virtual void display() = 0;
-        virtual void use(Entity_Mock*) {}
+        virtual void use(Entity*) {}
         string getName() { return name; }
         string getType() { return type; }
 
