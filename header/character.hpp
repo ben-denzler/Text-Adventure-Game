@@ -28,12 +28,14 @@ class Character : public Entity
         virtual void heal(int h) { health += abs(h); }
         virtual void setAttack(int a) { attack = abs(a); }
         virtual void setDefense(int d) { defense = abs(d); }
-        virtual void setCurrentArmor(baseItem* a) { currWeapon = a; }
+        virtual void setCurrentArmor(baseItem* a) { currArmor = a; }
         virtual void setCurrentWeapon(baseItem* w) { currWeapon = w; }
 
         // Getters
         virtual string getType() { return type; }
         baseItem* getInventory() { return inventory; }
+        virtual baseItem* getCurrentArmor() { return currArmor; }
+        virtual baseItem* getCurrentWeapon() { return currWeapon; }
 };
     
 #endif // CHARACTER_HPP

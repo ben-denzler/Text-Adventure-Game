@@ -37,6 +37,8 @@ class Entity
         string getName() { return name; }
         virtual string getType() {}
         virtual baseItem* getInventory() { /*THROW EXCEPTIONS (if this is not a character)*/ }
+        virtual baseItem* getCurrentArmor() {}
+        virtual baseItem* getCurrentWeapon() {}
 };
 
 #endif // ENTITY_HPP

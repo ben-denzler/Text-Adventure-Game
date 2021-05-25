@@ -10,6 +10,8 @@ TEST(ArmorTests, ArmorUseDefault) {
     baseItem* armor = new Armor();
     armor->use(character);
     EXPECT_EQ(character->getDefense(), 0);
+    EXPECT_EQ(character->getCurrentArmor(), armor);
+    EXPECT_EQ(character->getCurrentArmor()->getName(), "");
 }
 
 TEST(ArmorTests, ArmorUseCustom) {
@@ -17,6 +19,8 @@ TEST(ArmorTests, ArmorUseCustom) {
     baseItem* armor = new Armor("Skullflame Shield", "Armor", 48);
     armor->use(character);
     EXPECT_EQ(character->getDefense(), 48);
+    EXPECT_EQ(character->getCurrentArmor(), armor);
+    EXPECT_EQ(character->getCurrentArmor()->getName(), "Skullflame Shield");
 }
 
 #endif
