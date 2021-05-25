@@ -27,6 +27,8 @@ class Entity
         virtual void heal(int h) {}
         virtual void setAttack(int a) {}
         virtual void setDefense(int d) {}
+        virtual void setCurrentArmor(baseItem* a) {}
+        virtual void setCurrentWeapon(baseItem* w) {}
 
         // Getters
         int getAttack() { return attack; }
@@ -35,6 +37,8 @@ class Entity
         string getName() { return name; }
         virtual string getType() {}
         virtual baseItem* getInventory() { /*THROW EXCEPTIONS (if this is not a character)*/ }
+        virtual baseItem* getCurrentArmor() {}
+        virtual baseItem* getCurrentWeapon() {}
 };
 
 #endif // ENTITY_HPP

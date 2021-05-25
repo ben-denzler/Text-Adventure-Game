@@ -18,7 +18,7 @@ class AbstractFactory {
 class EntityFactory : public AbstractFactory {
     private:
         string arrName[3] = {"Bird", "Cat", "Dinosaur"};
-        enum classNames { Roguemouse, Swordsmouse, Monkmouse };
+        enum classNames { Roguemouse, Swordmouse, Monkmouse };
     public:
         virtual Entity* createEnemy(int level) {
             string name = arrName[rand() % 3];
@@ -36,29 +36,57 @@ Entity* EntityFactory::createCharacter(string name, int type) {
     CharacterInventory->addItem(Armor);
     CharacterInventory->addItem(Weapon);
     CharacterInventory->addItem(Consumable);
-
+    
     // Roguemouse
-    if (type == 1) { 
-        CharacterInventory->addItem(new ::Weapon("Sharpened Spoon", "Weapon", 20));
-        CharacterInventory->addItem(new ::Armor("Leather Elbowpads", "Armor", 20));
-        CharacterInventory->addItem(new ::Consumable("Magic Mushnoom", "Consumable", 10, 17));
-        return new Character(name, "Roguemouse", 100, 20, 5, CharacterInventory);
+    if (type == 1) 
+    { 
+        baseItem* weapon = new ::Weapon("Sharpened Spoon", "Weapon", 20);
+        baseItem* armor = new ::Armor("Leather Elbowpads", "Armor", 5);
+        baseItem* consumable = new ::Consumable("Magic Mushnoom", "Consumable", 10, 17);
+
+        CharacterInventory->addItem(weapon);
+        CharacterInventory->addItem(armor);
+        CharacterInventory->addItem(consumable);
+
+        Character* newCharacter = new Character(name, "Roguemouse", 100, 0, 0, CharacterInventory);
+        weapon->use(newCharacter);
+        armor->use(newCharacter);
+
+        return newCharacter;
     }
-    // Swordsmouse
+    // Swordmouse
     else if (type == 2)
     {
-        CharacterInventory->addItem(new ::Weapon("Wooden Toothpick", "Weapon", 20));
-        CharacterInventory->addItem(new ::Armor("Mini Green Tunic", "Armor", 20));
-        CharacterInventory->addItem(new ::Consumable("Glass of Milk", "Consumable", 10, 17));
-        return new Character(name, "Swordmouse", 50, 75, 10, CharacterInventory);
+        baseItem* weapon = new ::Weapon("Wooden Toothpick", "Weapon", 75);
+        baseItem* armor = new ::Armor("Mini Green Tunic", "Armor", 10);
+        baseItem* consumable = new ::Consumable("Glass of Milk", "Consumable", 10, 17);
+        
+        CharacterInventory->addItem(weapon);
+        CharacterInventory->addItem(armor);
+        CharacterInventory->addItem(consumable);
+        
+        Character* newCharacter = new Character(name, "Swordmouse", 50, 0, 0, CharacterInventory);
+        weapon->use(newCharacter);
+        armor->use(newCharacter);
+
+        return newCharacter;
     }
     // Monkmouse
     else
     {
-        CharacterInventory->addItem(new ::Weapon("Words of Wisdom", "Weapon", 20));
-        CharacterInventory->addItem(new ::Armor("Torn Robe", "Armor", 20));
-        CharacterInventory->addItem(new ::Consumable("Green Tea", "Consumable", 10, 17));
-        return new Character(name, "Monkmouse", 45, 30, 15, CharacterInventory);
+        baseItem* weapon = new ::Weapon("Words of Wisdom", "Weapon", 30);
+        baseItem* armor = new ::Armor("Torn Robe", "Armor", 15);
+        baseItem* consumable = new ::Consumable("Green Tea", "Consumable", 10, 17);
+
+        CharacterInventory->addItem(weapon);
+        CharacterInventory->addItem(armor);
+        CharacterInventory->addItem(consumable);
+        
+        Character* newCharacter = new Character(name, "Monkmouse", 45, 0, 0, CharacterInventory);
+        weapon->use(newCharacter);
+        armor->use(newCharacter);
+
+        return newCharacter;
     }
 }
 

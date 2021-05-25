@@ -15,6 +15,7 @@ class Weapon : public baseItem {
 
         virtual void use(Entity* hero) {
             hero->setAttack(attack);
+            hero->setCurrentWeapon(this);
         }
 
         virtual void display() {

@@ -20,6 +20,10 @@ TEST(FactoryTests, RoguemouseCreation) {
     EXPECT_TRUE(character1->getDefense() == 5);
     ASSERT_TRUE(character1->getInventory() != nullptr);
     EXPECT_TRUE(character1->getInventory()->getSize() == 3);
+    ASSERT_TRUE(character1->getCurrentArmor() != nullptr);
+    EXPECT_TRUE(character1->getCurrentArmor()->getName() == "Leather Elbowpads");
+    ASSERT_TRUE(character1->getCurrentWeapon() != nullptr);
+    EXPECT_TRUE(character1->getCurrentWeapon()->getName() == "Sharpened Spoon");
 
     std::cout.rdbuf(sbuf);
 }
@@ -36,8 +40,12 @@ TEST(FactoryTests, SwordsmouseCreation) {
     EXPECT_TRUE(character1->getHealth() == 50);
     EXPECT_TRUE(character1->getAttack() == 75);
     EXPECT_TRUE(character1->getDefense() == 10);
-    EXPECT_TRUE(character1->getInventory() != nullptr);
+    ASSERT_TRUE(character1->getInventory() != nullptr);
     EXPECT_TRUE(character1->getInventory()->getSize() == 3);
+    ASSERT_TRUE(character1->getCurrentArmor() != nullptr);
+    EXPECT_TRUE(character1->getCurrentArmor()->getName() == "Mini Green Tunic");
+    ASSERT_TRUE(character1->getCurrentWeapon() != nullptr);
+    EXPECT_TRUE(character1->getCurrentWeapon()->getName() == "Wooden Toothpick");
 
     std::cout.rdbuf(sbuf);
 }
@@ -57,6 +65,10 @@ TEST(FactoryTests, MonkmouseCreation) {
     EXPECT_TRUE(character1->getDefense() == 15);
     ASSERT_TRUE(character1->getInventory() != nullptr);
     EXPECT_TRUE(character1->getInventory()->getSize() == 3);
+    ASSERT_TRUE(character1->getCurrentArmor() != nullptr);
+    EXPECT_TRUE(character1->getCurrentArmor()->getName() == "Torn Robe");
+    ASSERT_TRUE(character1->getCurrentWeapon() != nullptr);
+    EXPECT_TRUE(character1->getCurrentWeapon()->getName() == "Words of Wisdom");
 
     std::cout.rdbuf(sbuf);
 }

@@ -24,8 +24,8 @@ TEST(Weapon_tests, UseWeapon)
     Entity* character = new Character();
     baseItem* weapon = new Weapon("Good weapon", "wood", 2);
     weapon->use(character);
-
     EXPECT_EQ(character->getAttack(), 2);
+    EXPECT_TRUE(character->getCurrentWeapon()->getName() == "Good weapon");
 }
 
 TEST(Weapon_tests, UseWeaponDefaultConstructor)
