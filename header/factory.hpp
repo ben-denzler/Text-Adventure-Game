@@ -18,7 +18,7 @@ class AbstractFactory {
 class EntityFactory : public AbstractFactory {
     private:
         string arrName[3] = {"Bird", "Cat", "Dinosaur"};
-        enum classNames { Roguemouse, Swordsmouse, Monkmouse };
+        enum classNames { Roguemouse, Swordmouse, Monkmouse };
     public:
         virtual Entity* createEnemy(int level) {
             string name = arrName[rand() % 3];
