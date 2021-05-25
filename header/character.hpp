@@ -29,7 +29,7 @@ class Character : public Entity
 
         // Getters
         virtual string getType() { return type; }
-        virtual baseItem* getInventory() { return inventory; }
+        baseItem* getInventory() { return inventory; }
 };
-
+    
 #endif // CHARACTER_HPP

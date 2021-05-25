@@ -3,9 +3,6 @@
 
 #include <string>
 #include "entity.hpp"
-#include "character.hpp"
-
-using namespace std;
 
 class baseItem {
     protected:

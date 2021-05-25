@@ -2,7 +2,9 @@
 #define ENTITY_HPP
 
 #include <string>
-#include "baseItem.hpp"
+using namespace std;
+
+class baseItem;
 
 class Entity
 {
@@ -33,7 +35,6 @@ class Entity
         string getName() { return name; }
         virtual string getType() {}
         virtual baseItem* getInventory() { /*THROW EXCEPTIONS (if this is not a character)*/ }
-
 };
 
 #endif // ENTITY_HPP

@@ -18,7 +18,7 @@ TEST(CONSUMABLE_TESTS, USE_FUNCTION)
 
     Obj->use(character);
 
-    EXPECT_TRUE(20 == character->getHealth());
+    EXPECT_TRUE(10 == character->getHealth());
     EXPECT_TRUE(0 == character->getDefense());
    
 }
