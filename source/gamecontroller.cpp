@@ -10,13 +10,13 @@
 
 using namespace std;
 
-void GameController::createCharacter() {
+void GameController::createCharacter(istream& input) {
     string name;
     char type;
 
     // Ask for user input
     cout << "Please type the name of your character. Press Enter to continue." << endl;
-    getline(cin, name);
+    getline(input, name);
 
     // Display description of classes
     cout << endl;
@@ -26,10 +26,10 @@ void GameController::createCharacter() {
     cout << "3) Monkmouse - a wise mouse who specializes in using words and staffs." << endl;
 
     // Handle invalid input for type
-    cin >> type;
+    input >> type;
     while (!isdigit(type) || ((type != '1') && (type != '2') && (type != '3'))) {
         cout << "Invalid input, try again." << endl;
-        cin >> type;
+        input >> type;
     }
     cout << endl;
 
