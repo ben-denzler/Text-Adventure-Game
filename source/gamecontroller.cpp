@@ -149,10 +149,12 @@ void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
         getline(inFS, item);
         baseItem* foundItem = currCharacter->getInventory()->find(item);
         while (foundItem == nullptr) {
-            cout << "ERROR: ITEM NOT FOUND. Please type the item's name"
+            cout << "ERROR: ITEM NOT FOUND. Please type the item's name again." << endl;
             getline(inFS, item);
             foundItem = currCharacter->getInventory()->find(item);
         }
+            foundItem->use(currCharacter);
+            if (dynamic_cast<Consumable*>(foundItem) != nullptr) { delete foundItem; }
         cout << "You have chosen: " << item << endl;
     }
 

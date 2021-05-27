@@ -225,4 +225,15 @@ TEST(INVENTORY_TESTS, DisplayWeapon)
     std::cout.rdbuf(sbuf);
 }
 
+TEST(INVENTORY_TESTS, FindItem) {
+    baseItem* testInventory = initInventory();
+
+    baseItem* weapon = new Weapon("Thunderfury", "Weapon", 103);
+    baseItem* foundItem = testInventory->find(weapon->getName());
+    baseItem* foundItem2 = testInventory->find("butt");
+
+    EXPECT_TRUE(foundItem->getName() == "Thunderfury");
+    EXPECT_TRUE(foundItem2 == nullptr);
+}
+
 #endif

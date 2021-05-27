@@ -83,6 +83,30 @@ void Inventory::removeItem(baseItem* itemToRemove) {
 }
 
 baseItem* Inventory::find(string itemName) {
+    // for (unsigned int i = 0; i < inventory.size(); ++i) {
+    //     // If inventory has sub-inventories, call recursively
+    //     if (inventory.at(i)->getType() == "Inventory") {
+    //         return inventory.at(i)->find(itemName);
+    //     }
+        
+    //     baseItem* foundItem = inventory.at(i)->find(itemName);
+    //     if(foundItem != nullptr) return inventory.at(i);
+        
+    // }
+
+    for (unsigned int i = 0; i < inventory.size(); ++i) {
+        // If inventory has sub-inventories, call recursively
+        if (inventory.at(i)->getType() == "Inventory") {
+            baseItem* my_item = inventory.at(i)->find(itemName);
+            if (my_item != nullptr) {
+                return inventory.at(i);
+            }
+        }
+        if (inventory.at(i)->getName() == itemName) {
+            return inventory.at(i);
+        }
+    }
+    return nullptr;
     
 }
 
