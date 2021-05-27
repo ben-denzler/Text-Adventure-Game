@@ -1,5 +1,5 @@
-#ifndef ARMOR_TESTS_HPP__
-#define ARMOR_TESTS_HPP__
+#ifndef ARMOR_TESTS_HPP
+#define ARMOR_TESTS_HPP
 
 #include "gtest/gtest.h"
 #include "../header/armor.hpp"

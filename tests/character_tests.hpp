@@ -1,5 +1,5 @@
-#ifndef __CHARACTER_TESTS_HPP__
-#define __CHARACTER_TESTS_HPP__
+#ifndef CHARACTER_TESTS_HPP
+#define CHARACTER_TESTS_HPP
 
 #include "gtest/gtest.h"
 #include "../header/character.hpp"

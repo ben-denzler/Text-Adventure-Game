@@ -1,5 +1,5 @@
-#ifndef __ENEMY_TESTS_HPP__
-#define __ENEMY_TESTS_HPP__
+#ifndef ENEMY_TESTS_HPP
+#define ENEMY_TESTS_HPP
 
 #include "gtest/gtest.h"
 #include "../header/enemy.hpp"
