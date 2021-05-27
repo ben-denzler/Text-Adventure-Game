@@ -13,11 +13,18 @@ class GameController {
         Entity* currEnemy = nullptr;
 
     public:
-        void createCharacter(istream& input);
+        void createCharacter(istream&);
         void createEnemies();
         string getNarrative(string);
-        int battle();
-        int displayBattleOptions();
+        int battle(istream&);
+        int displayBattleOptions(istream&);
+        void evalBattleChoice(int, istream&);
+        int finishBattle();
+
+        // For testing
+        Entity* getEnemy(int i) { return enemiesInGame.at(i); }
+        Entity* getCurrCharacter() { return currCharacter; }
+        Entity* getCurrEnemy() { return currEnemy; }
 };
 
 #endif

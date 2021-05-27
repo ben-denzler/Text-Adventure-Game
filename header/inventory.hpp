@@ -17,6 +17,7 @@ class Inventory : public baseItem {
         void addToInventory(baseItem* item);
         void removeItem(baseItem*);
         int getSize() { return inventory.size(); }
+        baseItem* find(string itemName); 
 };
 
 Inventory::~Inventory() {
@@ -79,6 +80,10 @@ void Inventory::removeItem(baseItem* itemToRemove) {
             }
         }
     }
+}
+
+baseItem* Inventory::find(string itemName) {
+    
 }
 
 #endif
