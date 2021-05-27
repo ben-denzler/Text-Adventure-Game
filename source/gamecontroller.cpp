@@ -7,6 +7,8 @@
 #include <string>
 #include <cstdlib>
 #include <cctype>
+#include <ios>
+#include <limits>
 
 using namespace std;
 
@@ -42,6 +44,7 @@ void GameController::createCharacter(istream& input) {
     cout << currCharacter->getName() + " is a " + currCharacter->getType() << "!" << endl;
 
     // Delete anything created down here :)
+    input.ignore(numeric_limits<streamsize>::max(), '\n');
     delete my_factory;
 }
 
