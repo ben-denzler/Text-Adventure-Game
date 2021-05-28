@@ -99,39 +99,107 @@ TEST(Game_Controller, displayBattleOptions)
     std::cout.rdbuf(sbuf);
 }
 
-// FIXME: MUST TEST THIS FUNCTION TO SEE IF evalBattleChoice works
-TEST(Game_Controller, BattleFunctionTestOption4) 
-{
-    // stringstream buffer;
-    // streambuf *sbuf = cout.rdbuf();
-    // cout.rdbuf(buffer.rdbuf());
+// // FIXME: MUST TEST THIS FUNCTION TO SEE IF evalBattleChoice works
+// TEST(Game_Controller, BattleFunctionTestOption4) 
+// {
+//     // stringstream buffer;
+//     // streambuf *sbuf = cout.rdbuf();
+//     // cout.rdbuf(buffer.rdbuf());
 
-    ifstream inFS;
+//     ifstream inFS;
  
-    inFS.open("test_files/Game_Controller_displayBattleOption4.txt");
-    if (!inFS.is_open()) {
+//     inFS.open("test_files/Game_Controller_displayBattleOption4.txt");
+//     if (!inFS.is_open()) {
+//         cout << "Sorry, bad file." << endl;
+//         exit(0);
+//     }
+
+//     GameController* gameController = new GameController();
+//     gameController->createCharacter(inFS);
+
+//     // Original Weapon
+//     EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Words of Wisdom");
+//     EXPECT_TRUE(gameController->getCurrCharacter()->getAttack() == 30);
+
+//     // Words of Wisdom (ATT == 30)
+//     gameController->evalBattleChoice(4, inFS);          // Use Weapon (Change stats)
+//     EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Words of Wisdom");
+//     EXPECT_TRUE(gameController->getCurrCharacter()->getAttack() == 30);
+    
+    
+//     // gameController->evalBattleChoice(4, inFS);          // Use Consumable (Change stats and delete consumable)
+//     // EXPECT_TRUE();
+//     inFS.close();
+
+//     // std::cout.rdbuf(sbuf);
+// }
+
+TEST(Game_Controller, getNarrative_Choice1) {
+
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
+
+    ifstream script;
+ 
+    script.open("test_files/test_script.txt");
+    if (!script.is_open()) {
+        cout << "Sorry, bad file." << endl;
+        exit(0);
+    }
+
+    ifstream player_input;
+ 
+    player_input.open("test_files/Game_Controller_getNarrative_1.txt");
+    if (!player_input.is_open()) {
         cout << "Sorry, bad file." << endl;
         exit(0);
     }
 
     GameController* gameController = new GameController();
-    gameController->createCharacter(inFS);
+    gameController->createCharacter(player_input);
 
-    // Original Weapon
-    EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Words of Wisdom");
-    EXPECT_TRUE(gameController->getCurrCharacter()->getAttack() == 30);
-
-    // Words of Wisdom (ATT == 30)
-    gameController->evalBattleChoice(4, inFS);          // Use Weapon (Change stats)
-    EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Words of Wisdom");
-    EXPECT_TRUE(gameController->getCurrCharacter()->getAttack() == 30);
+    std::cout.rdbuf(sbuf);
     
-    
-    // gameController->evalBattleChoice(4, inFS);          // Use Consumable (Change stats and delete consumable)
-    // EXPECT_TRUE();
-    inFS.close();
+    stringstream buffer1;
+    streambuf *sbuf1 = cout.rdbuf();
+    cout.rdbuf(buffer1.rdbuf());
 
-    // std::cout.rdbuf(sbuf);
+    int result;
+    // Get Narrative (Dialogue 1)
+    result = gameController->getNarrative(script, player_input);
+    EXPECT_TRUE(result == 0);
+    EXPECT_TRUE(buffer1.str() == "Dialogue 1\n");
+
+    // // Get Narrative (Dialogue 2)
+    result = gameController->getNarrative(script, player_input);
+    EXPECT_TRUE(result == 0);
+    EXPECT_TRUE(buffer1.str() == "Dialogue 1\nDialogue 2\n");
+
+    // // Get Narrative (CHOICE)
+    // // Get Narrative (This is a choice prompt)
+    // // Get Narrative (1) Choice #1)
+    // // Get Narrative (2) Choice #2)
+    // // Get Narrative (You died!)
+    // // Get Narrative (You lived!)
+    result = gameController->getNarrative(script, player_input);
+    EXPECT_TRUE(result == 0);
+    EXPECT_TRUE(buffer1.str() == "Dialogue 1\nDialogue 2\nThis is a choice prompt\n\n1) Choice #1\n2) Choice #2\n\nMake a choice by typing 1 or 2...\n\nYou died!\n\n");
+
+    // // Get Narrative (Dialogue 3)
+    result = gameController->getNarrative(script, player_input);
+    EXPECT_TRUE(result == 0);
+    EXPECT_TRUE(buffer1.str() == "Dialogue 1\nDialogue 2\nThis is a choice prompt\n\n1) Choice #1\n2) Choice #2\n\nMake a choice by typing 1 or 2...\n\nYou died!\n\nDialogue 3\n");
+
+    // // Get Narrative (END)
+    result = gameController->getNarrative(script, player_input);
+    EXPECT_TRUE(result == -1);
+    EXPECT_TRUE(buffer1.str() == "Dialogue 1\nDialogue 2\nThis is a choice prompt\n\n1) Choice #1\n2) Choice #2\n\nMake a choice by typing 1 or 2...\n\nYou died!\n\nDialogue 3\nYou have finished the game! Congrats!\nPress any key to exit.\n");
+
+    script.close();
+    player_input.close();
+
+    std::cout.rdbuf(sbuf1);
 }
 
 #endif // 

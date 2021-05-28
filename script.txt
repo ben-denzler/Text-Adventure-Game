@@ -1,1 +1,21 @@
-Armor: Weave of Warped Fates, 77 DEF\nArmor: Carved Ivory Keepsake, 38 DEF\nArmor: Titanic Ocular Gland, 77 DEF\nWeapon: Warglaive of Azzinoth, 289 ATT\nWeapon: Thunderfury, 103 ATT\nWeapon: Shadowmourne, 56 ATT\nConsumable: Ravenous Anima Cell, 17 HP, 56 DEF\nConsumable: Phial of Serenity, 90 HP, 5 DEF\nConsumable: Potion of Phantom Fire, 1726 HP, 0 DEF\n
+DIALOGUE
+Dialogue 1
+
+DIALOGUE
+Dialogue 2
+
+BATTLE
+
+DIALOGUE
+Dialogue 3
+
+CHOICE
+Choice dialogue 1
+Choice dialogue 2
+Dialogue if you choose option 1
+Dialogue if you choose option 2
+
+DIALOGUE
+Dialogue 4
+
+END
