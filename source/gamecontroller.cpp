@@ -193,12 +193,11 @@ void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
             getline(inFS, item);
             foundItem = currCharacter->getInventory()->find(item);
         }
-        cout << "You have chosen: " << item << endl;
         foundItem->use(currCharacter);
         if (dynamic_cast<Consumable*>(foundItem) != nullptr) { currCharacter->getInventory()->removeItem(foundItem); }
     }
 
-    if (battleChoice != 2) {
+    if ((battleChoice != 2) && (currEnemy != nullptr)) {
         // Enemy's turn
         cout << currEnemy->getName() << " attacks!" << endl;
         currCharacter->takeDamage(currEnemy->getAttack());
