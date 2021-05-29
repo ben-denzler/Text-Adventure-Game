@@ -15,7 +15,7 @@ class GameController {
     public:
         void createCharacter(istream&);
         void createEnemies();
-        void getNarrative(istream&);
+        int getNarrative(istream&, istream&);
         void battle(istream&);
         int displayBattleOptions(istream&);
         void evalBattleChoice(int, istream&);

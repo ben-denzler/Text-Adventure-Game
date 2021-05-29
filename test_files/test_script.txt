@@ -1,0 +1,10 @@
+Dialogue 1
+Dialogue 2
+CHOICE
+This is a choice prompt
+Choice #1
+Choice #2
+You died!
+You lived!
+Dialogue 3
+END

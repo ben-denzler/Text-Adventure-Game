@@ -41,7 +41,7 @@ void GameController::createCharacter(istream& input) {
 
     // Confirms that the name and type is correct
     cout << endl;
-    cout << currCharacter->getName() + " is a " + currCharacter->getType() << "!" << endl;
+    cout << currCharacter->getName() + " is a " + currCharacter->getType() << "!" << endl << endl;
 
     // Delete anything created down here :)
     input.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -60,43 +60,43 @@ void GameController::createEnemies() {
     delete my_factory;
 }
 
-void GameController::getNarrative(istream& input) {
+int GameController::getNarrative(istream& script, istream& playerInput) {
     string nextLine;
     string choiceDialogue, choice1, choice2, result1, result2;
     
-    getline(input, nextLine);
+    getline(script, nextLine);
 
     if (nextLine == "END") {
         cout << "You have finished the game! Congrats!" << endl;
         cout << "Press any key to exit." << endl;
         char temp;
-        cin >> temp;
-        exit(0);
+        playerInput >> temp;
+        return -1;
     }
     else if (nextLine == "BATTLE") {
-        battle(input);
+        battle(playerInput);
     }
     else if (nextLine == "CHOICE") {
         char playerChoice = 0;
-        getline(input, choiceDialogue);             // PROMPT: Girl is in trouble
-        getline(input, choice1);                    // Option 1: 1) Save her
-        getline(input, choice2);                    // Option 2: 2) Ignore her
-        getline(input, result1);                    // Result 1: You were rewarded with a kiss. You stroll off happily
-        getline(input, result2);                    // Result 2: You hurridly walked away, ashamed of your decision
+        getline(script, choiceDialogue);             // PROMPT: Girl is in trouble
+        getline(script, choice1);                    // Option 1: 1) Save her
+        getline(script, choice2);                    // Option 2: 2) Ignore her
+        getline(script, result1);                    // Result 1: You were rewarded with a kiss. You stroll off happily
+        getline(script, result2);                    // Result 2: You hurridly walked away, ashamed of your decision
         
         cout << choiceDialogue << endl << endl;
         cout << "1) " << choice1 << endl;
-        cout << "2) " << choice2 << endl;
-        cout << "Make a choice by typing 1 or 2..." << endl << endl;
-        
-        input >> playerChoice;
-        while (!isdigit(playerChoice) || ((playerChoice != '1') && (playerChoice != '2')) {
+        cout << "2) " << choice2 << endl << endl;
+        cout << "Make a choice by typing 1 or 2..." << endl;
+
+        playerInput >> playerChoice;
+        while (!isdigit(playerChoice) || ((playerChoice != '1') && (playerChoice != '2'))) {
             cout << "Invalid input, try again." << endl;
-            input >> playerChoice;
+            playerInput >> playerChoice;
         }
         cout << endl;
 
-        if (playerChoice == '1') { 
+        if (playerChoice == '1') {
             // baseItem* newItem = new Consumable("Cheese", )
             // currCharacter->getInventory()->addItem();
             cout << result1 << endl; 
@@ -104,15 +104,9 @@ void GameController::getNarrative(istream& input) {
         else { cout << result2 << endl; }
         cout << endl;
 
-        input.ignore(numeric_limits<streamsize>::max(), '\n');
-        
+        playerInput.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    // Currently nextLine = DIALOGUE
-    else {
-        getline(input, nextLine);               // Get the actual dialogue 1
-        std::cout << nextLine << std::endl;
-    }
-
+    else { std::cout << nextLine << std::endl; }
     return 0;
 }
 
@@ -121,8 +115,7 @@ void GameController::getNarrative(istream& input) {
 // Returns 3 if character wants to flee.
 // Returns 4 if enemy is dead
 void GameController::battle(istream& inFS) {
-    
-    //get enemy from narrative
+    // Get enemy from back of list
     currEnemy = enemiesInGame.back();
     enemiesInGame.pop_back();
 
@@ -137,16 +130,14 @@ void GameController::battle(istream& inFS) {
             int battleChoice = displayBattleOptions(inFS);
             if (battleChoice == 3) {
                 cout << "You were able to safely get away." << endl;
-                return;
+                return; // NECESSARY DONT DELETE
             }
             else { evalBattleChoice(battleChoice, inFS); }
         }
-        
         finishBattle();
     }
     else {
         cout << "ERROR: NO ENEMY TO FIGHT" << endl;
-        return;
     }
 }
 
@@ -204,14 +195,13 @@ void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
         }
         foundItem->use(currCharacter);
         if (dynamic_cast<Consumable*>(foundItem) != nullptr) { currCharacter->getInventory()->removeItem(foundItem); }
-        cout << "You have chosen: " << item << endl;
     }
 
-    if (battleChoice != 2) {
+    if ((battleChoice != 2) && (currEnemy != nullptr)) {
         // Enemy's turn
         cout << currEnemy->getName() << " attacks!" << endl;
         currCharacter->takeDamage(currEnemy->getAttack());
-        cout << "Player loses "  << currEnemy->getAttack() << " HP" << endl;
+        cout << "Player loses "  << currEnemy->getAttack() << " HP!" << endl;
     }
 }
 
@@ -228,6 +218,7 @@ void GameController::finishBattle() {
         cin >> temp;
         exit(0);
     }
+    return;
 }
 
 #endif
