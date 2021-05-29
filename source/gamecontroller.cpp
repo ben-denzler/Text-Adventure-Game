@@ -42,8 +42,9 @@ void GameController::createCharacter(istream& input) {
     cout << currCharacter->getName() + " is a " + currCharacter->getType() << "!" << endl << endl;
 
     // Delete anything created down here :)
-    input.ignore(numeric_limits<streamsize>::max(), '\n');
     delete my_factory;
+    input.ignore(numeric_limits<streamsize>::max(), '\n');
+    
 }
 
 void GameController::createEnemies() {

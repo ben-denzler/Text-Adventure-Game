@@ -11,6 +11,7 @@ class Enemy: public Entity
         int level = 1;
     
     public:
+        ~Enemy() = default;
         Enemy(string _name, int _level) : Entity(_name, 1, 1, 1), level(_level) { randomStats(); }
 
         void randomStats()

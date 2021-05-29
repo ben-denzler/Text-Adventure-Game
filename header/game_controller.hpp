@@ -13,6 +13,14 @@ class GameController {
         Entity* currEnemy = nullptr;
 
     public:
+        ~GameController() {
+            for (unsigned i = 0; i < enemiesInGame.size(); ++i) {
+                delete enemiesInGame.at(i);
+            }
+            if (currCharacter != nullptr) { delete currCharacter; }
+            if (currEnemy != nullptr) { delete currEnemy; }
+
+        }
         void createCharacter(istream&);
         void createEnemies();
         int getNarrative(istream&, istream&);

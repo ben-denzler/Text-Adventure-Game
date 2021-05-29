@@ -25,5 +25,8 @@ int main() {
         cout << endl;
         gameStatus = gameController->getNarrative(inFS, cin);
     }
+    
+    delete gameController;
+
     return 0;
 }   

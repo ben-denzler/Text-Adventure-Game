@@ -12,7 +12,6 @@ class Consumable : public baseItem
 
     public:
         Consumable(): baseItem(" ", "Consumable"), defense(0), health(0) {}
-        baseItem* weapon = new Weapon("Good weapon", "wood", 2);
         Consumable(string _name, string _type, int _defense, int _health)
             : baseItem(_name, _type), defense(_defense), health(_health) {}
 

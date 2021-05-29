@@ -13,7 +13,7 @@ class Character : public Entity
         string type = "";
 
     public:
-        ~Character() { delete inventory; }
+        ~Character() {  delete inventory; }
         Character () : Entity("", 0, 0, 0), type(""), inventory(nullptr) {} 
         Character (string _name, string _type, int _health, int _attack, int _defense, baseItem* _inventory) 
             : Entity(_name, _health, _attack, _defense), type(_type), inventory(_inventory) {}

@@ -9,6 +9,7 @@ class baseItem {
         string name = "";
         string type = "";
     public:
+        virtual ~baseItem() {}
         baseItem(string n, string t) : name(n), type(t) {}
         virtual void display() = 0;
         virtual void use(Entity*) {}
@@ -21,11 +22,7 @@ class baseItem {
         virtual void removeItem(baseItem*) {}
         virtual int getSize() {}
         virtual baseItem* find(string itemName) { 
-            if(itemName == this->getName())
-            {
-                return this;
-            }
-
+            if (itemName == this->getName()) { return this; }
             return nullptr;
         }
 };
