@@ -28,8 +28,6 @@ class Enemy: public Entity
 
 #endif // ENEMY_H
 
-
-
  /*
         inventoryGetItemToSet(int index)
         {   
