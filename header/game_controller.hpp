@@ -1,7 +1,7 @@
 #ifndef GAME_CONTROLLER_HPP
 #define GAME_CONTROLLER_HPP
 
-#include "entity.hpp"
+#include "baseItem.hpp"
 #include <vector>
 
 using namespace std;
@@ -13,9 +13,9 @@ class GameController {
         Entity* currEnemy = nullptr;
 
     public:
-        void createCharacter();
+        void createCharacter(istream& input);
         void createEnemies();
-        std::string getNarrative(std::string);
+        string getNarrative(string);
         int battle();
         int displayBattleOptions();
 };

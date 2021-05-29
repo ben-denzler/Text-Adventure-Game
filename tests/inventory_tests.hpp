@@ -4,7 +4,6 @@
 #include "gtest/gtest.h"
 #include <iostream>
 #include <fstream>
-#include "../mock/Character_Mock.hpp"
 #include "../header/inventory.hpp"
 #include "../header/consumable.hpp"
 #include "../header/armor.hpp"

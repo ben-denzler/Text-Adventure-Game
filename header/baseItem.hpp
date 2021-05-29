@@ -1,8 +1,8 @@
 #ifndef BASEITEM_HPP
 #define BASEITEM_HPP
 
-#include <string>
 #include "entity.hpp"
+#include <string>
 
 class baseItem {
     protected:
