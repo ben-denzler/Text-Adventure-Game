@@ -16,11 +16,10 @@ class AbstractFactory {
 
 class EntityFactory : public AbstractFactory {
     private:
-        string arrName[3] = {"Bird", "Cat", "Dinosaur"};
-        enum classNames { Roguemouse, Swordmouse, Monkmouse };
+        string arrName[9] = { "Bird", "Cat", "Dinosaur", "Vagrant Mouse", "Very Large Bee", "Slippery Snake", "Angry Snail", "Doggy Who Lick", "Gorgonzolla, The Cheese Round of Death" };
     public:
         virtual Entity* createEnemy(int level) {
-            string name = arrName[rand() % 3];
+            string name = arrName[rand() % 9];
             return new Enemy(name, level);
         }
         virtual Entity* createCharacter(string name, int type);

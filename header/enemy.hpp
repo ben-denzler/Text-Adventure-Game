@@ -16,7 +16,7 @@ class Enemy: public Entity
         void randomStats()
         {
             health = rand() % ((10 * level) + 1) + (5 * level);       // if level = 1, health is between 5 and 15
-            attack = rand() % ((10 * level) + 1) + (5 * level);
+            attack = rand() % ((10 * level) + 1) + (5 * level);       
             defense = rand() % ((10 * level) + 1) + (5 * level);
         }
 
@@ -27,29 +27,3 @@ class Enemy: public Entity
 };
 
 #endif // ENEMY_H
-
- /*
-        inventoryGetItemToSet(int index)
-        {   
-            int i = 0;
-            bool foundInventory = false;
-            for( i; i < inventory.size(); i++)
-            {
-                ; keeps going until index is in range of one of these
-                if(index > inventory.at(i).size())
-                {
-                    index -= inventory.at(i).size();
-                }
-                else
-                {
-                    foundInventory = true;
-                    break;
-                }
-            }
-
-            if(foundIncentory)  return inventory.at(i)->at(index - 1); : return nullptr;
-           
-
-
-        }
- */

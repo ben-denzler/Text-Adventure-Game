@@ -17,6 +17,7 @@ class Inventory : public baseItem {
         void addToInventory(baseItem* item);
         void removeItem(baseItem*);
         int getSize() { return inventory.size(); }
+        baseItem* find(string itemName); 
 };
 
 Inventory::~Inventory() {
@@ -79,6 +80,23 @@ void Inventory::removeItem(baseItem* itemToRemove) {
             }
         }
     }
+}
+
+baseItem* Inventory::find(string itemName) {
+    for (unsigned int i = 0; i < inventory.size(); ++i) {
+        // If inventory has sub-inventories, call recursively
+        if (inventory.at(i)->getType() == "Inventory") {
+            baseItem* my_item = inventory.at(i)->find(itemName);
+            if (my_item != nullptr) {
+                return my_item;
+            }
+        }
+        // Check name of each sub-item
+        else if (inventory.at(i)->getName() == itemName) {
+            return inventory.at(i);
+        }
+    }
+    return nullptr;
 }
 
 #endif

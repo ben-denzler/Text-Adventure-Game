@@ -1,5 +1,5 @@
-#ifndef __INVENTORY_TESTS_HPP__
-#define __INVENTORY_TESTS_HPP__
+#ifndef INVENTORY_TESTS_HPP
+#define INVENTORY_TESTS_HPP
 
 #include "gtest/gtest.h"
 #include <iostream>
@@ -54,8 +54,7 @@ baseItem* initInventory() {
     return CharacterInventory;
 }
 
-TEST(INVENTORY_TESTS, AddItem)
-{ 
+TEST(InventoryTests, AddItem) { 
     baseItem* Inventory = initInventory();
 
     stringstream buffer;
@@ -73,8 +72,7 @@ TEST(INVENTORY_TESTS, AddItem)
     std::cout.rdbuf(sbuf);
 }
 
-TEST(INVENTORY_TESTS, AddToInventory)
-{     
+TEST(InventoryTests, AddToInventory) {     
     baseItem* Pets = new Inventory("Pets");
 
     baseItem* Inventory = initInventory();
@@ -94,7 +92,7 @@ TEST(INVENTORY_TESTS, AddToInventory)
     //  Face: Smiley Face, 10000 ATT\n
 }
 
-TEST(INVENTORY_TESTS, RemoveItemTypical) {
+TEST(InventoryTests, RemoveItemTypical) {
     baseItem* testInventory = initInventory();
 
     stringstream buffer;
@@ -113,7 +111,7 @@ TEST(INVENTORY_TESTS, RemoveItemTypical) {
     std::cout.rdbuf(sbuf);
 }
 
-TEST(INVENTORY_TESTS, RemoveAllItems) {
+TEST(InventoryTests, RemoveAllItems) {
     baseItem* testInventory = initInventory();
     baseItem* weapon1 = new Weapon("Warglaive of Azzinoth", "Weapon", 289);
     baseItem* weapon2 = new Weapon("Thunderfury", "Weapon", 103);
@@ -136,7 +134,7 @@ TEST(INVENTORY_TESTS, RemoveAllItems) {
     std::cout.rdbuf(sbuf);
 }
 
-TEST(INVENTORY_TESTS, RemoveNonexistentItem) {
+TEST(InventoryTests, RemoveNonexistentItem) {
     baseItem* testInventory = initInventory();
     baseItem* weapon = new Weapon("Gressil, Dawn of Ruin", "Weapon", 392);
     testInventory->removeItem(weapon);
@@ -155,7 +153,7 @@ TEST(INVENTORY_TESTS, RemoveNonexistentItem) {
     std::cout.rdbuf(sbuf);
 }
 
-TEST(INVENTORY_TESTS, RemoveAllConsumables_1) {
+TEST(InventoryTests, RemoveAllConsumables_1) {
     baseItem* testInventory = initInventory();
     baseItem* consumable1 = new Consumable("Ravenous Anima Cell", "Consumable", 56, 17);
     baseItem* consumable2 =  new Consumable("Phial of Serenity", "Consumable", 5, 90);
@@ -178,7 +176,7 @@ TEST(INVENTORY_TESTS, RemoveAllConsumables_1) {
     std::cout.rdbuf(sbuf);
 }
 
-TEST(INVENTORY_TESTS, RemoveAllConsumables_2) {
+TEST(InventoryTests, RemoveAllConsumables_2) {
     baseItem* consumable1 = new Consumable("Ravenous Anima Cell", "Consumable", 56, 17);
     baseItem* consumable2 =  new Consumable("Phial of Serenity", "Consumable", 5, 90);
     baseItem* consumable3 = new Consumable("Potion of Phantom Fire", "Consumable", 0, 1726);
@@ -201,8 +199,7 @@ TEST(INVENTORY_TESTS, RemoveAllConsumables_2) {
     std::cout.rdbuf(sbuf);
 }
 
-TEST(INVENTORY_TESTS, DisplayWeapon)
-{ 
+TEST(InventoryTests, DisplayWeapon) { 
     baseItem* my_inventory = initInventory();
     baseItem* weapon1 = new Weapon("stabber thing", "Weapon", 2);
     baseItem* weapon2 = new Weapon("my thumb", "Weapon", 3000);
@@ -223,6 +220,69 @@ TEST(INVENTORY_TESTS, DisplayWeapon)
 
     // When done redirect cout to its old self
     std::cout.rdbuf(sbuf);
+}
+
+TEST(InventoryTests, FindItemArmor) {
+    baseItem* testInventory = initInventory();
+
+    // Armor
+    baseItem* armor1 = new Armor("Weave of Warped Fates", "Armor", 77);
+    baseItem* armor2 = new Armor("Carved Ivory Keepsake", "Armor", 38);
+    baseItem* armor3 = new Armor("Titanic Ocular Gland", "Armor", 77);
+
+    baseItem* foundItem1 = testInventory->find(armor1->getName());
+    baseItem* foundItem2 = testInventory->find(armor2->getName());
+    baseItem* foundItem3 = testInventory->find(armor3->getName());
+
+    EXPECT_TRUE(foundItem1->getName() == armor1->getName());
+    EXPECT_TRUE(foundItem2->getName() == armor2->getName());
+    EXPECT_TRUE(foundItem3->getName() == armor3->getName());
+}
+
+TEST(InventoryTests, FindItemWeapon) {
+    baseItem* testInventory = initInventory();
+
+    // Weapons
+    baseItem* weapon1 = new Weapon("Warglaive of Azzinoth", "Weapon", 289);
+    baseItem* weapon2 = new Weapon("Thunderfury", "Weapon", 103);
+    baseItem* weapon3 = new Weapon("Shadowmourne", "Weapon", 56);
+
+    baseItem* foundItem4 = testInventory->find(weapon1->getName());
+    baseItem* foundItem5 = testInventory->find(weapon2->getName());
+    baseItem* foundItem6 = testInventory->find(weapon3->getName());
+
+    EXPECT_TRUE(foundItem4->getName() == weapon1->getName());
+    EXPECT_TRUE(foundItem5->getName() == weapon2->getName());
+    EXPECT_TRUE(foundItem6->getName() == weapon3->getName());
+}
+
+TEST(InventoryTests, FindItemConsumable) {
+    baseItem* testInventory = initInventory();
+
+    // Consumables
+    baseItem* consumable1 = new Consumable("Ravenous Anima Cell", "Consumable", 56, 17);
+    baseItem* consumable2 =  new Consumable("Phial of Serenity", "Consumable", 5, 90);
+    baseItem* consumable3 = new Consumable("Potion of Phantom Fire", "Consumable", 0, 1726);
+
+    baseItem* foundItem7 = testInventory->find(consumable1->getName());
+    baseItem* foundItem8 = testInventory->find(consumable2->getName());
+    baseItem* foundItem9 = testInventory->find(consumable3->getName());
+
+    EXPECT_TRUE(foundItem7->getName() == consumable1->getName());
+    EXPECT_TRUE(foundItem8->getName() == consumable2->getName());
+    EXPECT_TRUE(foundItem9->getName() == consumable3->getName());
+}
+
+TEST(InventoryTests, FindItemNonexistent) {
+    baseItem* testInventory = initInventory();
+
+    baseItem* foundItem10 = testInventory->find("Butt");
+    baseItem* foundItem11 = testInventory->find("Dog");
+    baseItem* foundItem12 = testInventory->find("Cat");
+
+    EXPECT_TRUE(foundItem10 == nullptr);
+    EXPECT_TRUE(foundItem11 == nullptr);
+    EXPECT_TRUE(foundItem12 == nullptr);
 }
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef __WEAPON_TESTS_HPP__
-#define __WEAPON_TESTS_HPP__
+#ifndef WEAPON_TESTS_HPP
+#define WEAPON_TESTS_HPP
 
 #include "gtest/gtest.h"
 #include "../header/character.hpp"

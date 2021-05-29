@@ -20,6 +20,16 @@ class baseItem {
         virtual void addItem(baseItem*) {}
         virtual void removeItem(baseItem*) {}
         virtual int getSize() {}
+        virtual baseItem* find(string itemName) { 
+            if(itemName == this->getName())
+            {
+                return this;
+            }
+
+            return nullptr;
+        }
 };
+
+//
 
 #endif

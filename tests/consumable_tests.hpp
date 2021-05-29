@@ -1,5 +1,5 @@
-#ifndef __CONSUMABLE_TESTS_HPP__
-#define __CONSUMABLE_TESTS_HPP__
+#ifndef CONSUMABLE_TESTS_HPP
+#define CONSUMABLE_TESTS_HPP
 
 #include "gtest/gtest.h"
 #include <iostream>
