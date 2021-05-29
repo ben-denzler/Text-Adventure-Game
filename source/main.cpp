@@ -1,15 +1,22 @@
 #include "gamecontroller.cpp"
+#include <fstream>
 
 int main() {
+    ifstream inFS;
+
+    inFS.open("script.txt");
+    if (!inFS.is_open()) {
+        cout << "Sorry, bad file." << endl;
+        exit(0);
+    }
+
     GameController* gameController = new GameController();
-    string item;
     gameController->createCharacter(cin);
-    cout << "----------------------------------------------------" << endl;
-    cout << "INVENTORY: Armor, Weapons & Consumables" << endl;
-    gameController->getCurrCharacter()->getInventory()->display();
-    cout << "----------------------------------------------------" << endl;
-    cout << "Choose your item by typing its name (Case Matters). Press Enter to continue." << endl;
-    getline(cin, item);
-    cout << "You have chosen: " << item << endl;
+    gameController->createEnemies();
+
+    int gameStatus = gameController->getNarrative(inFS, cin);
+    while (gameStatus != -1) {
+        gameStatus = gameController->getNarrative(inFS, cin);
+    }
     return 0;
 }

@@ -302,6 +302,35 @@ TEST(Game_Controller_Narrative, getNarrative_Choice1) {
     std::cout.rdbuf(sbuf1);
 }
 
+TEST(Game_Controller_Battle, Battle1) 
+{
+    stringstream buffer;
+    streambuf *sbuf = cout.rdbuf();
+    cout.rdbuf(buffer.rdbuf());
 
+    ifstream inFS;
+
+    inFS.open("test_files/Game_Controller_Battle1.txt");
+    if (!inFS.is_open()) {
+        cout << "Sorry, bad file." << endl;
+        exit(0);
+    }
+
+    GameController* gameController = new GameController();
+    gameController->createCharacter(inFS);
+    gameController->createEnemies();
+
+    // Enemy dies (ATTACK EVERY TIME)
+    int result = gameController->battle(inFS);
+    EXPECT_EQ(result, 0);
+
+    // Character Dies (DEFEND EVERY TIME)
+    result = gameController->battle(inFS);
+    EXPECT_EQ(result, -1);
+
+    inFS.close();
+
+    std::cout.rdbuf(sbuf);
+}
 
 #endif
