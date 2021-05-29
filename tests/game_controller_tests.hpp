@@ -124,7 +124,7 @@ TEST(Game_Controller_Battle, BattleFunctionTestOption4Weapon)
     EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentWeapon()->getName() == "Words of Wisdom");
     EXPECT_TRUE(gameController->getCurrCharacter()->getAttack() == 30);
 
-    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\n");
+    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\n\nPlayer equips Words of Wisdom!\n\n");
 
     inFS.close();
 
@@ -157,7 +157,7 @@ TEST(Game_Controller_Battle, BattleFunctionTestOption4Armor)
     EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Torn Robe");
     EXPECT_TRUE(gameController->getCurrCharacter()->getDefense() == 15);
 
-    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\n");
+    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\n\nPlayer equips Torn Robe!\n\n");
 
     inFS.close();
 
@@ -194,7 +194,7 @@ TEST(Game_Controller_Battle, BattleFunctionTestOption4Consumable)
     EXPECT_TRUE(gameController->getCurrCharacter()->getHealth() == 62);
     EXPECT_TRUE(gameController->getCurrCharacter()->getDefense() == 25);
 
-    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\nGreen Tea has been deleted!\n");
+    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\n\nPlayer uses Green Tea!\nGreen Tea has been deleted!\n\n");
 
     inFS.close();
 
@@ -227,7 +227,7 @@ TEST(Game_Controller_Battle, BattleFunctionTestOption4ArmorInvalid)
     EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Torn Robe");
     EXPECT_TRUE(gameController->getCurrCharacter()->getDefense() == 15);
 
-    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\nERROR: ITEM NOT FOUND. Please type the item's name again.\n");
+    EXPECT_TRUE(buffer.str() == "Please type the name of your character. Press Enter to continue.\n\nChoose the corresponding number of your class.\n1) Rougemouse - a fast mouse who specializes in small weaponary.\n2) Swordmouse - a gallant mouse who specializes in sword combat.\n3) Monkmouse - a wise mouse who specializes in using words and staffs.\n\nWords of Wisdom is now added to your inventory!\nTorn Robe is now added to your inventory!\nGreen Tea is now added to your inventory!\n\nJohn is a Monkmouse!\n\n----------------------------------------------------\nINVENTORY: Armor, Weapons & Consumables\nArmor: Torn Robe, 15 DEF\nWeapon: Words of Wisdom, 30 ATT\nConsumable: Green Tea, 17 HP, 10 DEF\n----------------------------------------------------\nChoose your item by typing its name (Case Matters). Press Enter to continue.\n\nERROR: ITEM NOT FOUND. Please type the item's name again.\n\nPlayer equips Torn Robe!\n\n");
 
     inFS.close();
 
@@ -294,7 +294,7 @@ TEST(Game_Controller_Narrative, getNarrative_Choice1) {
     // // Get Narrative (END)
     result = gameController->getNarrative(script, player_input);
     EXPECT_TRUE(result == -1);
-    EXPECT_TRUE(buffer1.str() == "Dialogue 1\nDialogue 2\nThis is a choice prompt\n\n1) Choice #1\n2) Choice #2\n\nMake a choice by typing 1 or 2...\n\nYou died!\n\nDialogue 3\nYou have finished the game! Congrats!\nPress any key to exit.\n");
+    EXPECT_TRUE(buffer1.str() == "Dialogue 1\nDialogue 2\nThis is a choice prompt\n\n1) Choice #1\n2) Choice #2\n\nMake a choice by typing 1 or 2...\n\nYou died!\n\nDialogue 3\nYou have finished the game! Congrats!\nPress ENTER key to exit.\n");
 
     script.close();
     player_input.close();

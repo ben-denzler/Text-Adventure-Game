@@ -3,6 +3,7 @@ Dialogue 2
 BATTLE
 Dialogue 3
 CHOICE
+Choice dialogue PROMPT
 Choice dialogue 1
 Choice dialogue 2
 Dialogue if you choose option 1

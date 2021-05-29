@@ -66,9 +66,9 @@ int GameController::getNarrative(istream& script, istream& playerInput) {
 
     if (nextLine == "END") {
         cout << "You have finished the game! Congrats!" << endl;
-        cout << "Press any key to exit." << endl;
+        cout << "Press ENTER key to exit." << endl;
         char temp;
-        playerInput >> temp;
+        playerInput.get(temp);
         return -1;
     }
     else if (nextLine == "BATTLE") {
@@ -94,11 +94,7 @@ int GameController::getNarrative(istream& script, istream& playerInput) {
         }
         cout << endl;
 
-        if (playerChoice == '1') {
-            // baseItem* newItem = new Consumable("Cheese", )
-            // currCharacter->getInventory()->addItem();
-            cout << result1 << endl; 
-        }
+        if (playerChoice == '1') { cout << result1 << endl; }
         else { cout << result2 << endl; }
         cout << endl;
 
@@ -173,7 +169,14 @@ void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
         cout << "You chose to defend." << endl;
         cout << currEnemy->getName() << " attacks!" << endl;
         currCharacter->takeDamage(currEnemy->getAttack() - currCharacter->getDefense());
-        cout << "Player loses "  << (currEnemy->getAttack() - currCharacter->getDefense()) << " HP." << endl << endl;
+        
+        cout << "Player loses ";
+        if ((currEnemy->getAttack() - currCharacter->getDefense()) < 0) {
+            cout << "0 HP." << endl << endl;
+        }
+        else {
+            cout << abs(currEnemy->getAttack() - currCharacter->getDefense()) << " HP." << endl << endl;
+        }
     }
 
     // Access Inventory and change weapon, armor, or use consumable
@@ -188,19 +191,27 @@ void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
         getline(inFS, item);
         baseItem* foundItem = currCharacter->getInventory()->find(item);
         while (foundItem == nullptr) {
-            cout << "ERROR: ITEM NOT FOUND. Please type the item's name again." << endl;
+            cout << endl << "ERROR: ITEM NOT FOUND. Please type the item's name again." << endl;
             getline(inFS, item);
             foundItem = currCharacter->getInventory()->find(item);
         }
         foundItem->use(currCharacter);
-        if (dynamic_cast<Consumable*>(foundItem) != nullptr) { currCharacter->getInventory()->removeItem(foundItem); }
+        
+        if (dynamic_cast<Consumable*>(foundItem) != nullptr) {    
+            cout << endl << "Player uses " << foundItem->getName() << "!" << endl;
+            currCharacter->getInventory()->removeItem(foundItem); 
+        }
+        else {
+            cout << endl << "Player equips " << foundItem->getName() << "!" << endl;
+        }
+        cout << endl;
     }
 
     if ((battleChoice != 2) && (currEnemy != nullptr) && (!currEnemy->isDead())) {
         // Enemy's turn
         cout << currEnemy->getName() << " attacks!" << endl;
         currCharacter->takeDamage(currEnemy->getAttack());
-        cout << "Player loses "  << currEnemy->getAttack() << " HP!" << endl;
+        cout << "Player loses "  << currEnemy->getAttack() << " HP." << endl << endl;
     }
 }
 
