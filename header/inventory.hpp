@@ -23,15 +23,7 @@ class Inventory : public baseItem {
 Inventory::~Inventory() {
     // Delete inventory
     for (int i = 0; i < inventory.size(); i++) {
-        // Inventory* inven = dynamic_cast<Inventory*>(inventory.at(i));
-        // if(inven != nullptr)
-        // {
-        //     delete inven;
-        // }
-        // else
-        // {
-            delete inventory.at(i);
-        // }
+        delete inventory.at(i);
     }
 }
 

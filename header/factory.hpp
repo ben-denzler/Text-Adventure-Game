@@ -10,6 +10,7 @@
 
 class AbstractFactory {
     public:
+        virtual ~AbstractFactory() {}
         virtual Entity* createEnemy(int) = 0;
         virtual Entity* createCharacter(string, int) = 0;
 };

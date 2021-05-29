@@ -11,6 +11,7 @@ class Consumable : public baseItem
         int health =  0;
 
     public:
+        ~Consumable() = default;
         Consumable(): baseItem(" ", "Consumable"), defense(0), health(0) {}
         Consumable(string _name, string _type, int _defense, int _health)
             : baseItem(_name, _type), defense(_defense), health(_health) {}
