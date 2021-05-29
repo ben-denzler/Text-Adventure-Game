@@ -10,8 +10,6 @@
 #include <ios>
 #include <limits>
 
-using namespace std;
-
 void GameController::createCharacter(istream& input) {
     string name;
     char type;

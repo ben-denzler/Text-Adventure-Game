@@ -67,7 +67,7 @@ void Inventory::removeItem(baseItem* itemToRemove) {
         }
         else {
             // Don't let player delete all items in Armor or Weapons
-            if ((inventory.size() == 1) && (this->getName() != "Consumable")) {
+            if ((inventory.size() == 1) && (itemToRemove->getType() != "Consumable")) {
                 cout << "It's a bad idea to delete all your items!" << endl;
                 return;
             }

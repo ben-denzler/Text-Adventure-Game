@@ -1,5 +1,4 @@
 #include "gamecontroller.cpp"
-using namespace std;
 
 int main() {
     GameController* gameController = new GameController();
