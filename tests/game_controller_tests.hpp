@@ -99,4 +99,39 @@ TEST(Game_Controller, displayBattleOptions)
     std::cout.rdbuf(sbuf);
 }
 
+// FIXME: MUST TEST THIS FUNCTION TO SEE IF evalBattleChoice works
+TEST(Game_Controller, BattleFunctionTestOption4) 
+{
+    // stringstream buffer;
+    // streambuf *sbuf = cout.rdbuf();
+    // cout.rdbuf(buffer.rdbuf());
+
+    ifstream inFS;
+ 
+    inFS.open("test_files/Game_Controller_displayBattleOption4.txt");
+    if (!inFS.is_open()) {
+        cout << "Sorry, bad file." << endl;
+        exit(0);
+    }
+
+    GameController* gameController = new GameController();
+    gameController->createCharacter(inFS);
+
+    // Original Weapon
+    EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Words of Wisdom");
+    EXPECT_TRUE(gameController->getCurrCharacter()->getAttack() == 30);
+
+    // Words of Wisdom (ATT == 30)
+    gameController->evalBattleChoice(4, inFS);          // Use Weapon (Change stats)
+    EXPECT_TRUE(gameController->getCurrCharacter()->getCurrentArmor()->getName() == "Words of Wisdom");
+    EXPECT_TRUE(gameController->getCurrCharacter()->getAttack() == 30);
+    
+    
+    // gameController->evalBattleChoice(4, inFS);          // Use Consumable (Change stats and delete consumable)
+    // EXPECT_TRUE();
+    inFS.close();
+
+    // std::cout.rdbuf(sbuf);
+}
+
 #endif // 

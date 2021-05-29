@@ -15,11 +15,11 @@ class GameController {
     public:
         void createCharacter(istream&);
         void createEnemies();
-        string getNarrative(string);
-        int battle(istream&);
+        void getNarrative(istream&);
+        void battle(istream&);
         int displayBattleOptions(istream&);
         void evalBattleChoice(int, istream&);
-        int finishBattle();
+        void finishBattle();
 
         // For testing
         Entity* getEnemy(int i) { return enemiesInGame.at(i); }

@@ -60,19 +60,67 @@ void GameController::createEnemies() {
     delete my_factory;
 }
 
-std::string GameController::getNarrative(std::string fileName) {
+void GameController::getNarrative(istream& input) {
+    string nextLine;
+    string choiceDialogue, choice1, choice2, result1, result2;
     
-   // get next line
-   //if line is CHOICE
-   //getnext two times 
-    
+    getline(input, nextLine);
+
+    if (nextLine == "END") {
+        cout << "You have finished the game! Congrats!" << endl;
+        cout << "Press any key to exit." << endl;
+        char temp;
+        cin >> temp;
+        exit(0);
+    }
+    else if (nextLine == "BATTLE") {
+        battle(input);
+    }
+    else if (nextLine == "CHOICE") {
+        char playerChoice = 0;
+        getline(input, choiceDialogue);             // PROMPT: Girl is in trouble
+        getline(input, choice1);                    // Option 1: 1) Save her
+        getline(input, choice2);                    // Option 2: 2) Ignore her
+        getline(input, result1);                    // Result 1: You were rewarded with a kiss. You stroll off happily
+        getline(input, result2);                    // Result 2: You hurridly walked away, ashamed of your decision
+        
+        cout << choiceDialogue << endl << endl;
+        cout << "1) " << choice1 << endl;
+        cout << "2) " << choice2 << endl;
+        cout << "Make a choice by typing 1 or 2..." << endl << endl;
+        
+        input >> playerChoice;
+        while (!isdigit(playerChoice) || ((playerChoice != '1') && (playerChoice != '2')) {
+            cout << "Invalid input, try again." << endl;
+            input >> playerChoice;
+        }
+        cout << endl;
+
+        if (playerChoice == '1') { 
+            // baseItem* newItem = new Consumable("Cheese", )
+            // currCharacter->getInventory()->addItem();
+            cout << result1 << endl; 
+        }
+        else { cout << result2 << endl; }
+        cout << endl;
+
+        input.ignore(numeric_limits<streamsize>::max(), '\n');
+        
+    }
+    // Currently nextLine = DIALOGUE
+    else {
+        getline(input, nextLine);               // Get the actual dialogue 1
+        std::cout << nextLine << std::endl;
+    }
+
+    return 0;
 }
 
-// Returns 0 if enemy is dead
 // Returns 1 if character is dead
 // Returns 2 if enemy does not exist
 // Returns 3 if character wants to flee.
-int GameController::battle(istream& inFS) {
+// Returns 4 if enemy is dead
+void GameController::battle(istream& inFS) {
     
     //get enemy from narrative
     currEnemy = enemiesInGame.back();
@@ -89,16 +137,16 @@ int GameController::battle(istream& inFS) {
             int battleChoice = displayBattleOptions(inFS);
             if (battleChoice == 3) {
                 cout << "You were able to safely get away." << endl;
-                return 3;
+                return;
             }
             else { evalBattleChoice(battleChoice, inFS); }
         }
         
-        return finishBattle();
+        finishBattle();
     }
     else {
         cout << "ERROR: NO ENEMY TO FIGHT" << endl;
-        return 2;
+        return;
     }
 }
 
@@ -122,6 +170,7 @@ int GameController::displayBattleOptions(istream& input){
     return atoi(&num);
 }
 
+// Helper for battle()
 void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
     // Attack
     if (battleChoice == 1) {
@@ -153,8 +202,8 @@ void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
             getline(inFS, item);
             foundItem = currCharacter->getInventory()->find(item);
         }
-            foundItem->use(currCharacter);
-            if (dynamic_cast<Consumable*>(foundItem) != nullptr) { delete foundItem; }
+        foundItem->use(currCharacter);
+        if (dynamic_cast<Consumable*>(foundItem) != nullptr) { currCharacter->getInventory()->removeItem(foundItem); }
         cout << "You have chosen: " << item << endl;
     }
 
@@ -166,15 +215,18 @@ void GameController::evalBattleChoice(int battleChoice, istream& inFS) {
     }
 }
 
-int GameController::finishBattle() {
+// Helper for battle()
+void GameController::finishBattle() {
     if (currEnemy->isDead()) {
         cout << "Congratulations! " << currEnemy->getName() << " has fainted." << endl;
         delete currEnemy;
-        return 0;
     }
     else if (currCharacter->isDead()) {
         cout << "You have passed out. Can you find the strength to save the world again?" << endl;
-        return 1;
+        cout << "Press any key to exit." << endl;
+        char temp;
+        cin >> temp;
+        exit(0);
     }
 }
 
