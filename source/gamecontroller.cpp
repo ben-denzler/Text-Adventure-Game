@@ -125,6 +125,7 @@ int GameController::battle(istream& inFS) {
             int battleChoice = displayBattleOptions(inFS);
             if (battleChoice == 3) {
                 cout << "You were able to safely get away." << endl;
+                delete currEnemy;
                 return 0; // NECESSARY DONT DELETE
             }
             else { evalBattleChoice(battleChoice, inFS); }
@@ -226,7 +227,9 @@ int GameController::finishBattle(istream& inFS) {
         cout << "You have passed out. Can you find the strength to save the world again?" << endl;
         cout << "Press any key to exit." << endl;
         char temp;
-        inFS >> temp;
+        inFS.get(temp);
+        while (temp != '\n') { inFS.get(temp); }
+        delete currEnemy;
         return -1;
     }
     return 0;
