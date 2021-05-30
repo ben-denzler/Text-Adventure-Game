@@ -56,12 +56,6 @@ This diagram describes the Composite design pattern that we are using for the ga
  ![GameController diagram](docs/GameControllerOMT.png)
 
  The final part of our OMT diagram is a single class rather than a design pattern. This GameController class will hold information about the game's current state and direct its flow through use of classes from the other two design patterns. In this way, it is essentially the interface for the game. It keeps track of the enemies that *could* be encountered, the player's character and the current enemy. It can create entities by calling our Factory, and it is responsible for reading and outputting the game's narrative from a file. It will dictate much of the game's user interface and decide when dialogue, battle etc. should occur based on headings we place in our game's "script" file.
-
- > ## Final deliverable
- > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
  
  ## Screenshots
 
