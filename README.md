@@ -4,7 +4,7 @@
  
 ## Project Description
  
- This is a simple text-based RPG that has a story, choice of characters, inventory for armor/weapons/items, turn-based combat and several endings that depend on choices you make during the game. The game takes place in "steps" that can be narrative or combat. Dialogue choices are made while not in combat, and battles have options to attack, run etc.
+ This is a simple text-based RPG that has a story, choice of characters, inventory for armor/weapons/items and turn-based combat. The game takes place in "steps" that can be narrative or combat. Dialogue choices are made while not in combat, and battles have options to attack, defend, flee or view inventory.
 
  We were interested in this project because we grew up playing video games (at least to some extent) and thought that trying to make one ourselves would be a fun and exciting project. A role-playing game is fairly open-ended compared to other ideas, and so allows us to be more creative- we can write our own story! A more open-ended project like this will also help us better understand the need for design patterns to structure our program.
 
@@ -17,7 +17,7 @@
  * [LucidChart](https://www.lucidchart.com/) - Tool for creating OMT class diagrams
 
  ### Project input/output
- * **Input:** User enters numbers corresponding to choices they can make during dialogue and combat scenes. For example, when not in combat, user could choose to travel down path 1 or 2, or could access their inventory before deciding. Invalid input is ignored.
+ * **Input:** User enters numbers or strings corresponding to choices they can make during dialogue and combat scenes. For example, when not in combat, user could choose to travel down path 1 or 2, or could access their inventory before deciding. Invalid input is ignored.
  * **Output:** The game primarily outputs sentences describing the situation to the user and prompts them to make choices until they reach the end of the game. There are no graphical elements for the environment etc., only text. Outputs are continually displayed until the user gives input.
 
  ### Design patterns to be used
@@ -55,15 +55,6 @@ This diagram describes the Composite design pattern that we are using for the ga
  ![GameController diagram](docs/GameControllerOMT.png)
 
  The final part of our OMT diagram is a single class rather than a design pattern. This GameController class will hold information about the game's current state and direct its flow through use of classes from the other two design patterns. In this way, it is essentially the interface for the game. It keeps track of the enemies that *could* be encountered, the player's character and the current enemy. It can create entities by calling our Factory, and it is responsible for reading and outputting the game's narrative from a file. It will dictate much of the game's user interface and decide when dialogue, battle etc. should occur based on headings we place in our game's "script" file.
- 
- > ## Phase III
- > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
- > * Before the meeting you should perform a sprint plan like you did in Phase II
- > * In the meeting with your TA you will discuss: 
- >   - How effective your last sprint was (each member should talk about what they did)
- >   - Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- >   - Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- >   - What tasks you are planning for this next sprint.
 
  > ## Final deliverable
  > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
