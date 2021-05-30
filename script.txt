@@ -1,21 +1,12 @@
-DIALOGUE
 Dialogue 1
-
-DIALOGUE
 Dialogue 2
-
 BATTLE
-
-DIALOGUE
 Dialogue 3
-
 CHOICE
+Choice dialogue PROMPT
 Choice dialogue 1
 Choice dialogue 2
 Dialogue if you choose option 1
 Dialogue if you choose option 2
-
-DIALOGUE
 Dialogue 4
-
 END

@@ -13,13 +13,17 @@ class GameController {
         Entity* currEnemy = nullptr;
 
     public:
+        ~GameController() {
+            for (unsigned i = 0; i < enemiesInGame.size(); ++i) { delete enemiesInGame.at(i); }
+            if (currCharacter != nullptr) { delete currCharacter; }
+        }
         void createCharacter(istream&);
         void createEnemies();
         int getNarrative(istream&, istream&);
-        void battle(istream&);
+        int battle(istream&);
         int displayBattleOptions(istream&);
         void evalBattleChoice(int, istream&);
-        void finishBattle();
+        int finishBattle(istream&);
 
         // For testing
         Entity* getEnemy(int i) { return enemiesInGame.at(i); }

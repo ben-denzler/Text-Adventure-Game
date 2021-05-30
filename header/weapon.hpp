@@ -10,6 +10,7 @@ class Weapon : public baseItem {
     protected:
         int attack;
     public:
+        ~Weapon() = default;
         Weapon() : baseItem("", "Weapon"), attack(0) {}
         Weapon(string n, string t, int a) : baseItem(n, t), attack(a) {}
 
