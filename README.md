@@ -12,6 +12,7 @@
  * [C++](https://en.wikipedia.org/wiki/C%2B%2B) - Our choice of coding language for the project
  * [CMake](https://cmake.org/) - Makefile tool used for easy project compilation
  * [Valgrind](https://valgrind.org/) - Memory management and error detection tool
+ * [GoogleTest](https://github.com/google/googletest) - Google's C++ testing framework
  * [Git](https://git-scm.com/) and [GitHub](https://github.com/) - Version control and project management tools
  * [Visual Studio Code](https://code.visualstudio.com/) - Robust code editor with an integrated terminal and Git support
  * [LucidChart](https://www.lucidchart.com/) - Tool for creating OMT class diagrams
@@ -42,7 +43,7 @@
 
  ![Composite pattern diagram](docs/CompositeOMT.png) 
 
-This diagram describes the Composite design pattern that we are using for the game's inventory system. BaseItem is a Component that defines the shared interface for all our inventory classes. `use()` will open an inventory, equip armor and weapons, or use a consumable. `getName()` returns an object's name, and `display()` outputs an item or inventory's stats. Inventory is a Composite because it implements the shared interface but also contains other BaseItem objects (acts as a bag that contains other items). Armor, Weapon and Consumable are all Leaves and will be held within Inventory objects. The leaves implement their own stats like defense, attack or health. Each Character object will get their own private Inventory which can be added to throughout the game.
+This diagram describes the Composite design pattern that we are using for the game's inventory system. BaseItem is a Component that defines the shared interface for all our inventory classes. `use()` will open an inventory, equip armor and weapons, or use a consumable, and `display()` outputs an item or inventory's stats. Inventory is a Composite because it implements the shared interface but also contains other BaseItem objects (acts as a bag that contains other items). Armor, Weapon and Consumable are all leaves and will be held within Inventory objects. The leaves implement their own stats like defense, attack or health. Each Character object will get their own private Inventory which can be added to throughout the game.
 
 ### Abstract Factory pattern diagram:
 
@@ -63,9 +64,52 @@ This diagram describes the Composite design pattern that we are using for the ga
  > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+
+### Character creation and intro dialogue
+
+![IntroScreenshot](docs/IntroScreenshot.png)
+
+### User making a narrative choice
+
+![ChoiceScreenshot](docs/ChoiceScreenshot.png)
+
+### Battle interface
+
+![BattleScreenshot](docs/BattleScreenshot.png)
+
+### Accessing user's inventory
+
+![InventoryScreenshot](docs/InventoryScreenshot.png)
+
+### Game ends from player fainting
+
+![FaintingScreenshot](docs/FaintingScreenshot.png)
+
  ## Installation/Usage
- > Instructions on installing and running your application
+ 1) Clone the repo using: 
+ ```
+ git clone --recursive https://github.com/cs100/final-project-bdenz001_apang024_jbeed001.git
+ ```
+ 2) `cd` into the cloned directory.
+
+ 3)  If you don't already have CMake installed, refer to [this link](https://cmake.org/install/) to install it. On Linux, you can run this command to install:
+ ```
+ sudo apt-get install cmake
+ ```
+
+ 4) The following commands will then make and run the game:
+ ```
+ cmake .
+ make
+ ./game
+ ```
+
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
- 
+
+This project used the GoogleTest framework for unit testing our C++ code in addition to a simple form of Continuous Integration (CI). 
+
+* **GoogleTest:** Test files were created for every class and were all included in a `test.cpp` so we could run our tests from one executable. If applicable, return values were checked for testing. Functions outputting to streams had their outputs captured in a buffer and compared to strings. Standard cases and edge cases were tested for all functions, if possible. 
+
+* **Continuous Integration:** A simple form of CI was used by creating a workflow on GitHub. Our workflow compiled our code and ran our test executable, reporting as passed if every test passed. This workflow was triggered on every push or pull request to the `master` branch.
+
+[![CI](https://github.com/cs100/final-project-bdenz001_apang024_jbeed001/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-bdenz001_apang024_jbeed001/actions/workflows/main.yml)
