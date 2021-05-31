@@ -4,19 +4,19 @@ Humans never adapted to their tiny hands and whiskers, which created a dangerous
 You are the last known descendant of the lab technician that performed the original experiment, and you've finally figured out how to revert The Squeak.
 You must make the long journey to the now-abandoned facility, Big Cheese Lab, but deadly creatures like cats, birds and even toads stand in your way.
 Thankfully, you've been training in various forms of mouse combat for many years.
-You found one of your grandfather's, Mousamous the III, old maps laying around the burrow.
-You examine the map and see that inorder to get to the Big Cheese Lab you must cross the street, take a left, and keep going straight.
+You found one of your grandfather's, Mousamous the III's, old maps laying around the burrow.
+You examine the map and see that in order to get to the Big Cheese Lab you must cross the street, take a left, and keep going straight.
 But be aware of the creatures lurking at every corner.
 CHOICE
 Do you accept the challenge?
-Yes, I am super duper cool and can get through these obstacles and save the world.
-No, I think I might be going crazy because I think someone is narrating my life.
-You are a brave little mouse may the mouse gods be with you.
-Too bad you still have to do it to save humanity, so suck it up and get going.
-You continue to walk down Blue Cheese Avenue (Yes, we renamed our streets after The Squeak).
+Yes, I am super duper cool and can get through these obstacles and save the world!
+No, I think I might be going crazy because I think someone is narrating my life...
+You are a brave little mouse. May the mouse gods be with you.
+Too bad- you still have to do it to save humanity, so suck it up and get going.
+You continue to walk down Blue Cheese Avenue (yes, we renamed our streets after The Squeak).
 All of a sudden something creeps up behind you....
 BATTLE
-After getting away you spot the most attractive mouse you have ever seen.
+After getting away, you spot the most attractive mouse you have ever seen.
 CHOICE
 You then start to use some cheesy pick up lines.
 You must be made of cheese because you're looking Gouda tonight ;)
@@ -27,28 +27,28 @@ They inform you that The Big Cheese Lab is closer than you think. You smile and 
 They turn and inform you that you are already at the Big Cheese Lab. More specifically you are in the backyard.
 The talk of cheesy pick up lines was too irresitable to the creature listening in.
 BATTLE
-You and your new mouse friend gets away by the little hairs on your guys' tiny backs.
+You and your new mouse friend get away by the little hairs on your guys' tiny backs.
 What a lucky duo.
 But are they?
 With a charming grin, you pull out the cheese of humanity that's been aged for 70 years.
-You take a whiff and throw it into the centrifuge that will create the antidote to Mousism or better known as The Squeak.
-Before the proccess of the Mousism can be reversed you realized you have forgotten an ingredient.
+You take a whiff and throw it into the centrifuge that will create the antidote to Mousism, better known as The Squeak.
+Before the proccess of the Mousism can be reversed, you realize you have forgotten an ingredient.
 The mouse occultist will not be happy with you. WATCH OUT! They must have been tailing you this whole time!
-You must defeat occultist's pet before you can restore humanity.
+You must defeat the occultist's pet before you can restore humanity.
 BATTLE
-Before the occultist's pet could attack again you throw smelly cheese at it.
-occulist's pet runs out the lab to get away from the putrid smell.
+Before the occultist's pet could attack again, you throw smelly cheese at it.
+The occulist's pet runs out the lab to get away from the putrid smell.
 You added the ingrendient of mouseship to the centrifuge.
 YOU HAVE SAVED HUMANITY!!!!
 You let your friend take the first sip (you are a gentlemouse but also you dont know if the cure has side effects)
-You relize that the serum does not work when you most attractive mouse you have ever seen is turned into the most attractive cat you have ever seen.
+You realize that the serum does not work when you most attractive mouse you have ever seen is turned into the most attractive cat you have ever seen.
 Better luck next time you thought to yourself as you run away from the cat.
 Credits:
 Ben - "I can't believe that worked!"
 Ashley - "I told you it would work."
 Joshua - "Can we add more to the story?"
 Everyone thinking - "Why did he just say that :)"
-Player - "Anybody else choose "N""
+Player - "Anybody else choose 'No'"
 END
 
 Dialogue 1
