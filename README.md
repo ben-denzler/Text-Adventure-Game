@@ -104,7 +104,7 @@ pushd googletest
 git checkout f966ed
 popd
 ```
-Be sure to `make` again afterwards before runnig the tests.
+Be sure to `make` again afterwards before running the tests.
 
 
  ## Testing
