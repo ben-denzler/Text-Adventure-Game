@@ -98,12 +98,14 @@ This diagram describes the Composite design pattern that we are using for the ga
  ./game
  ```
 
-* The test executable can be ran with `./test`. If you encounter errors while running this, make sure you cloned recursively. If the problem persists, try running the following and execute `./test` again.
+* The test executable can be ran with `./test`. If you encounter errors while running this, make sure you cloned recursively. If the problem persists, try running the following:
 ```
 pushd googletest
 git checkout f966ed
 popd
 ```
+Be sure to `make` again afterwards before runnig the tests.
+
 
  ## Testing
 
